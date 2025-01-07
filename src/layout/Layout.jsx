@@ -56,7 +56,7 @@ const Layout = () => {
     }
   return (
     <div className='w-full scroll-smooth  relative overflow-hidden  h-[100dvh] ' >
-       <div className='h-[95%] pt-2' >
+       <div className='h-[95%] pt-2 pb-10' >
             <HeaderHome judul={judulActif} onCLick={() => setSideActive(true)} />
             <Outlet/>
        </div>
