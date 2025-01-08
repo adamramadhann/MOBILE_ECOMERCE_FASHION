@@ -3,10 +3,97 @@ import { AiOutlineDelete, AiOutlineLeft, AiOutlineRight, AiOutlineSearch } from 
 import { BiGitCompare } from 'react-icons/bi'
 import Search from '../components/SearchProduck'
 
+
+
+const dataProduck = [
+    {
+    img : '/Mask Group (1) copy.png',
+    nameProduck : 'Skrit Dress',
+    price : '$ 34.00'
+    },
+    {
+    img : '/Mask Group (2) copy.png',
+    nameProduck : 'Lihua Tonic White',
+    price : '$ 53.00'
+    },
+    {
+    img : '/Mask Group (1) copy.png',
+    nameProduck : 'Lihua Tonic White',
+    price : '$ 53.00'
+    },
+    {
+    img : '/Mask Group (2) copy.png',
+    nameProduck : 'Lihua Tonic White',
+    price : '$ 53.00'
+    },
+    {
+    img : '/Mask Group (1) copy.png',
+    nameProduck : 'Lihua Tonic White',
+    price : '$ 53.00'
+    },
+    {
+    img : '/Mask Group (2) copy.png',
+    nameProduck : 'Lihua Tonic White',
+    price : '$ 53.00'
+    },
+]
+
+
+const dataProduckAll = [
+    {
+        type: 'accessories',
+        produck: [
+            { nama_produck: 'Kalung Emas', brand: 'Tiffany & Co.' },
+            { nama_produck: 'Gelang Berlian', brand: 'Cartier' },
+            { nama_produck: 'Anting Berlian', brand: 'Swarovski' },
+            { nama_produck: 'Jam Tangan', brand: 'Rolex' }
+        ]
+    },
+    {
+        type: 'pakaian',
+        produck: [
+            { nama_produck: 'Kaos Lengan Panjang', brand: 'Zara' },
+            { nama_produck: 'Kemeja Formal', brand: 'H&M' },
+            { nama_produck: 'Jaket Bomber', brand: 'Uniqlo' },
+            { nama_produck: 'Sweater Hoodie', brand: 'Nike' }
+        ]
+    },
+    {
+        type: 'celana',
+        produck: [
+            { nama_produck: 'Celana Jeans', brand: 'Levi\'s' },
+            { nama_produck: 'Celana Chinos', brand: 'Dockers' },
+            { nama_produck: 'Celana Pendek', brand: 'Adidas' },
+            { nama_produck: 'Celana Jogger', brand: 'Puma' }
+        ]
+    },
+    {
+        type: 'beauty',
+        produck: [
+            { nama_produck: 'Lipstik Matte', brand: 'MAC' },
+            { nama_produck: 'Foundation', brand: 'Fenty Beauty' },
+            { nama_produck: 'Masker Wajah', brand: 'L\'Oreal' },
+            { nama_produck: 'Parfum', brand: 'Chanel' }
+        ]
+    },
+    {
+        type: 'sepatu_sandal',
+        produck: [
+            { nama_produck: 'Sepatu Sneaker', brand: 'Adidas' },
+            { nama_produck: 'Sepatu Formal', brand: 'Gucci' },
+            { nama_produck: 'Sandal Santai', brand: 'Havaianas' },
+            { nama_produck: 'Sepatu Boots', brand: 'Timberland' }
+        ]
+    }
+];      
+
 const SearchScreen = () => {
     const [activAcc, setActiveAcc] = useState(null)
     const [inputSearch, setInputSearch] = useState(false)
     const [searchValue, setSearchValue] = useState('')
+    const [clickValueINput, setClickValueInput] = useState(false)
+    const [filterData, setFileterData] = useState(dataProduck)
+    const [filterDataAll, setFileterDataAll] = useState(dataProduckAll)
     const searchContainerRef = useRef(null)
     const [data, setData] = useState([])
     const [curent, setCurent] = useState(0)
@@ -17,7 +104,7 @@ const SearchScreen = () => {
         {
             card: 'CLONING',
             img: '/image 51.png',
-            bg: 'bg-[#BBBFAE]',
+            bg: 'bg-[#BBBFAE]', 
             items: [
                 { jenis: 'Switer', items: '125 itsms' },
                 { jenis: 'Jacket', items: '105 itsms' },
@@ -57,46 +144,32 @@ const SearchScreen = () => {
     ]
 
 
-    const dataProduck = [
-        {
-          img : '/Mask Group (1) copy.png',
-          nameProduck : 'Skrit Dress',
-          price : '$ 34.00'
-        },
-        {
-          img : '/Mask Group (2) copy.png',
-          nameProduck : 'Lihua Tonic White',
-          price : '$ 53.00'
-        },
-        {
-          img : '/Mask Group (1) copy.png',
-          nameProduck : 'Lihua Tonic White',
-          price : '$ 53.00'
-        },
-        {
-          img : '/Mask Group (2) copy.png',
-          nameProduck : 'Lihua Tonic White',
-          price : '$ 53.00'
-        },
-        {
-          img : '/Mask Group (1) copy.png',
-          nameProduck : 'Lihua Tonic White',
-          price : '$ 53.00'
-        },
-        {
-          img : '/Mask Group (2) copy.png',
-          nameProduck : 'Lihua Tonic White',
-          price : '$ 53.00'
-        },
-    ]
+
+    
  
-    const [filterData, setFileterData] = useState(dataProduck)
     const handleSerch = (value) => {
         const filterDataProduck = dataProduck.filter((prev) => {
             return prev.nameProduck.toLowerCase().includes(value.toLowerCase())
         })
-        setFileterData(filterDataProduck)
+
+
+        const dataAll = dataProduckAll.map((val) => {
+            const filterDataAll = val.produck.filter((prev) =>  {
+                return prev.nama_produck.toLowerCase().includes(value.toLowerCase())
+            })
+            return {...val, produck : filterDataAll}
+        })
+
+
+        setFileterData([
+            filterDataProduck,
+            dataAll.flatMap((prev) => prev.produck  )
+        ])
     }
+
+
+
+
 
     const handleScroll = () => {
         if(refProduckScroll.current) {
@@ -121,10 +194,11 @@ const SearchScreen = () => {
     }
 
     const handleSearchValue = (e) => {
-        if (e.target) {  // Pastikan e.target ada
+        if (e.target) {  
             const searchTerm = e.target.value;
             setSearchValue(searchTerm);
-            handleSerch(searchTerm);  // Panggil fungsi pencarian
+            handleSerch(searchTerm); 
+            // setClickValueInput(true)
         }
     }
     
@@ -253,7 +327,8 @@ const SearchScreen = () => {
 
             {
                 inputSearch && (
-                    <div className='w-full px-3 space-y-4 overflow-hidden ' >
+                    <div>
+                        <div className={`w-full px-3 space-y-4 overflow-hidden ${clickValueINput ? 'hidden' : 'block'} `} >
                        <div className={`w-full ${data.length ? 'block' : 'hidden'}`} >
                             <div className='w-full flex justify-between' >
                                 <h1 className='text-lg text-gray-600 ' >Recent Searches</h1>
@@ -277,6 +352,20 @@ const SearchScreen = () => {
                             data={filterData}
                             onScroll={handleScroll}
                         />
+                        </div>
+                        <div>
+                            {
+                                filterDataAll.map((val) => (
+                                    <div>
+                                        {
+                                            val.produck.map((e) => (
+                                                <h1>{e.brand}</h1>
+                                            ))
+                                        }
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
                 )
             }
