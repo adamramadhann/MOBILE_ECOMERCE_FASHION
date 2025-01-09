@@ -353,7 +353,7 @@ const SearchScreen = () => {
                             onScroll={handleScroll}
                         />
                         </div>
-                        <div>
+                        {/* <div>
                             {
                                 filterDataAll.map((val) => (
                                     <div>
@@ -365,7 +365,7 @@ const SearchScreen = () => {
                                     </div>
                                 ))
                             }
-                        </div>
+                        </div> */}
                     </div>
                 )
             }
