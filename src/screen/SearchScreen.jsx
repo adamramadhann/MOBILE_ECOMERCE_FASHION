@@ -5,95 +5,115 @@ import Search from '../components/SearchProduck'
 
 
 
-const dataProduck = [
-    {
-    img : '/Mask Group (1) copy.png',
-    nameProduck : 'Skrit Dress',
-    price : '$ 34.00'
-    },
-    {
-    img : '/Mask Group (2) copy.png',
-    nameProduck : 'Lihua Tonic White',
-    price : '$ 53.00'
-    },
-    {
-    img : '/Mask Group (1) copy.png',
-    nameProduck : 'Lihua Tonic White',
-    price : '$ 53.00'
-    },
-    {
-    img : '/Mask Group (2) copy.png',
-    nameProduck : 'Lihua Tonic White',
-    price : '$ 53.00'
-    },
-    {
-    img : '/Mask Group (1) copy.png',
-    nameProduck : 'Lihua Tonic White',
-    price : '$ 53.00'
-    },
-    {
-    img : '/Mask Group (2) copy.png',
-    nameProduck : 'Lihua Tonic White',
-    price : '$ 53.00'
-    },
-]
+const combinedData = {
+    populer: [
+        {
+            id: 21,
+            img: '/Mask Group (1) copy.png',
+            nameProduck: 'Skrit Dress',
+            price: '$ 34.00',
+            category: 'pakaian',
+            brand: 'Zara'
+        },
+        {
+            id: 22,
+            img: '/Mask Group (2) copy.png',
+            nameProduck: 'Lihua Tonic White',
+            price: '$ 53.00',
+            category: 'beauty',
+            brand: 'Fenty Beauty'
+        },
+        {
+            id: 23,
+            img: '/Mask Group (1) copy.png',
+            nameProduck: 'Lihua Tonic White',
+            price: '$ 53.00',
+            category: 'beauty',
+            brand: 'L\'Oreal'
+        },
+        {
+            id: 24,
+            img: '/Mask Group (2) copy.png',
+            nameProduck: 'Lihua Tonic White',
+            price: '$ 53.00',
+            category: 'accessories',
+            brand: 'Tiffany & Co.'
+        },
+        {
+            id: 25,
+            img: '/Mask Group (1) copy.png',
+            nameProduck: 'Lihua Tonic White',
+            price: '$ 53.00',
+            category: 'accessories',
+            brand: 'Cartier'
+        },
+        {
+            id: 26,
+            img: '/Mask Group (2) copy.png',
+            nameProduck: 'Lihua Tonic White',
+            price: '$ 53.00',
+            category: 'accessories',
+            brand: 'Swarovski'
+        }
+    ],
+    produkAll: [
+        {
+            type: 'accessories',
+            produck: [
+                {id : 13,img: '/Mask Group (2) copy.png', nama_produck: 'Kalung Emas',price : '10.00' ,brand: 'Tiffany & Co.' },
+                {id : 14,img: '/Mask Group (2) copy.png', nama_produck: 'Gelang Berlian',price : '10.00' ,brand: 'Cartier' },
+                {id : 15,img: '/Mask Group (2) copy.png', nama_produck: 'Anting Berlian',price : '10.00' ,brand: 'Swarovski' },
+                {id : 16,img: '/Mask Group (2) copy.png', nama_produck: 'Jam Tangan',price : '10.00' ,brand: 'Rolex' }
+            ]
+        },
+        {
+            type: 'pakaian',
+            produck: [
+                {id : 17,img: '/Mask Group (2) copy.png', nama_produck: 'Kaos Lengan Panjang',price : '10.00' ,brand: 'Zara' },
+                {id : 18,img: '/Mask Group (2) copy.png', nama_produck: 'Kemeja Formal',price : '10.00' ,brand: 'H&M' },
+                {id : 19,img: '/Mask Group (2) copy.png', nama_produck: 'Jaket Bomber',price : '10.00' ,brand: 'Uniqlo' },
+                {id : 20,img: '/Mask Group (2) copy.png', nama_produck: 'Sweater Hoodie',price : '10.00' ,brand: 'Nike' }
+            ]
+        },
+        {
+            type: 'celana',
+            produck: [
+                {id :  1,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Jeans',price : '10.00' ,brand: 'Levi\'s' },
+                {id : 2,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Chinos',price : '10.00' ,brand: 'Dockers' },
+                {id : 3,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Pendek',price : '10.00' ,brand: 'Adidas' },
+                {id : 4,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Jogger',price : '10.00' ,brand: 'Puma' }
+            ]
+        },
+        {
+            type: 'beauty',
+            produck: [
+                {id : 5,img: '/Mask Group (2) copy.png', nama_produck: 'Lipstik Matte',price : '10.00' ,brand: 'MAC' },
+                {id : 6,img: '/Mask Group (2) copy.png', nama_produck: 'Foundation',price : '10.00' ,brand: 'Fenty Beauty' },
+                {id : 7,img: '/Mask Group (2) copy.png', nama_produck: 'Masker Wajah',price : '10.00' ,brand: 'L\'Oreal' },
+                {id : 8,img: '/Mask Group (2) copy.png', nama_produck: 'Parfum',price : '10.00' ,brand: 'Chanel' }
+            ]
+        },
+        {
+            type: 'sepatu_sandal',
+            produck: [
+                {id : 9,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Sneaker',price : '10.00' ,brand: 'Adidas' },
+                {id : 10,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Formal',price : '10.00' ,brand: 'Gucci' },
+                {id : 11,img: '/Mask Group (2) copy.png', nama_produck: 'Sandal Santai',price : '10.00' ,brand: 'Havaianas' },
+                {id : 12,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Boots',price : '10.00' ,brand: 'Timberland' }
+            ]
+        }
+    ]
+};
 
-
-const dataProduckAll = [
-    {
-        type: 'accessories',
-        produck: [
-            { nama_produck: 'Kalung Emas', brand: 'Tiffany & Co.' },
-            { nama_produck: 'Gelang Berlian', brand: 'Cartier' },
-            { nama_produck: 'Anting Berlian', brand: 'Swarovski' },
-            { nama_produck: 'Jam Tangan', brand: 'Rolex' }
-        ]
-    },
-    {
-        type: 'pakaian',
-        produck: [
-            { nama_produck: 'Kaos Lengan Panjang', brand: 'Zara' },
-            { nama_produck: 'Kemeja Formal', brand: 'H&M' },
-            { nama_produck: 'Jaket Bomber', brand: 'Uniqlo' },
-            { nama_produck: 'Sweater Hoodie', brand: 'Nike' }
-        ]
-    },
-    {
-        type: 'celana',
-        produck: [
-            { nama_produck: 'Celana Jeans', brand: 'Levi\'s' },
-            { nama_produck: 'Celana Chinos', brand: 'Dockers' },
-            { nama_produck: 'Celana Pendek', brand: 'Adidas' },
-            { nama_produck: 'Celana Jogger', brand: 'Puma' }
-        ]
-    },
-    {
-        type: 'beauty',
-        produck: [
-            { nama_produck: 'Lipstik Matte', brand: 'MAC' },
-            { nama_produck: 'Foundation', brand: 'Fenty Beauty' },
-            { nama_produck: 'Masker Wajah', brand: 'L\'Oreal' },
-            { nama_produck: 'Parfum', brand: 'Chanel' }
-        ]
-    },
-    {
-        type: 'sepatu_sandal',
-        produck: [
-            { nama_produck: 'Sepatu Sneaker', brand: 'Adidas' },
-            { nama_produck: 'Sepatu Formal', brand: 'Gucci' },
-            { nama_produck: 'Sandal Santai', brand: 'Havaianas' },
-            { nama_produck: 'Sepatu Boots', brand: 'Timberland' }
-        ]
-    }
-];      
+console.log(combinedData);
+     
 
 const SearchScreen = () => {
     const [activAcc, setActiveAcc] = useState(null)
     const [inputSearch, setInputSearch] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [clickValueINput, setClickValueInput] = useState(false)
-    const [filterData, setFileterData] = useState(dataProduck)
-    const [filterDataAll, setFileterDataAll] = useState(dataProduckAll)
+    const [filterData, setFileterData] = useState(combinedData)
     const searchContainerRef = useRef(null)
     const [data, setData] = useState([])
     const [curent, setCurent] = useState(0)
@@ -148,23 +168,20 @@ const SearchScreen = () => {
     
  
     const handleSerch = (value) => {
-        const filterDataProduck = dataProduck.filter((prev) => {
+        const filterDataProduckPopuler = combinedData.populer.filter((prev) => {
             return prev.nameProduck.toLowerCase().includes(value.toLowerCase())
         })
 
-
-        const dataAll = dataProduckAll.map((val) => {
-            const filterDataAll = val.produck.filter((prev) =>  {
-                return prev.nama_produck.toLowerCase().includes(value.toLowerCase())
-            })
-            return {...val, produck : filterDataAll}
+        const filterProduckAll = combinedData.produkAll.map((prev) => {
+            return {
+                ...prev,
+                produck :prev.produck.filter((e) => 
+                    e.nama_produck.toLowerCase().includes(value.toLowerCase())
+                )
+            }
         })
 
-
-        setFileterData([
-            filterDataProduck,
-            dataAll.flatMap((prev) => prev.produck  )
-        ])
+        setFileterData({ populer : filterDataProduckPopuler, produkAll : filterProduckAll })
     }
 
 
@@ -264,7 +281,7 @@ const SearchScreen = () => {
         }
     }, [data])
 
-    console.log(data);
+    // console.log(filterData);
     
     
 
@@ -294,7 +311,7 @@ const SearchScreen = () => {
 
             {
                 !inputSearch && (
-                    <div className={`flex flex-col gap-2`}>
+                    <div className={`flex flex-col gap-2 xl:gap-20 `}>
                         {cardDetail.map((val, index) => (
                             <div key={index}>
                                 <div
@@ -327,45 +344,32 @@ const SearchScreen = () => {
 
             {
                 inputSearch && (
-                    <div>
-                        <div className={`w-full px-3 space-y-4 overflow-hidden ${clickValueINput ? 'hidden' : 'block'} `} >
-                       <div className={`w-full ${data.length ? 'block' : 'hidden'}`} >
-                            <div className='w-full flex justify-between' >
-                                <h1 className='text-lg text-gray-600 ' >Recent Searches</h1>
-                                <button onClick={handleRemoveLocalStorage} className='text-red-500' ><AiOutlineDelete size={18} /></button>
-                            </div>
-                            <div className='flex max-h-[150px]  overflow-auto hide-scrollbar ' >
-                                {data.length > 0 && (
-                                    <div className='flex flex-wrap gap  rounded-full items-center gap-3' >
-                                        {data.map((item, index) => (
-                                        <div onClick={() => handleSearchValue({ target: { value: item } })} className='flex border items-center w-auto px-3 py-1 rounded-full gap-3 ' >
-                                                <h1 key={index} className='text-sm select-none ' >{item}</h1> 
-                                                <button onClick={() => handleDeleteSinggle(item)} className='text-red-500 font-bold ' >X</button>
-                                        </div>
-                                        ))}
+                    <div className='w-full' >
+                        <div className={`w-full px-3 space-y-4 overflow-hidden  `} >
+                            <div className={`w-full `} >
+                                    <div className={`w-full flex justify-between ${!data.length && 'hidden'} `} >
+                                        <h1 className='text-lg text-gray-600 ' >Recent Searches</h1>
+                                        <button onClick={handleRemoveLocalStorage} className='text-red-500' ><AiOutlineDelete size={18} /></button>
                                     </div>
-                                )}
-                            </div>
-                       </div>
-                        <Search
-                            ref={refProduckScroll}
-                            data={filterData}
-                            onScroll={handleScroll}
-                        />
-                        </div>
-                        <div>
-                            {
-                                filterDataAll.map((val) => (
-                                    <div>
-                                        {
-                                            val.produck.map((e) => (
-                                                <h1>{e.brand}</h1>
-                                            ))
-                                        }
+                                    <div className='flex max-h-[150px]  overflow-auto hide-scrollbar ' >
+                                        {data.length > 0 && (
+                                            <div className='flex flex-wrap gap  rounded-full items-center gap-3' >
+                                                {data.map((item, index) => (
+                                                <div onClick={() => handleSearchValue({ target: { value: item } })} className='flex border items-center w-auto px-3 py-1 rounded-full gap-3 ' >
+                                                        <h1 key={index} className='text-sm select-none ' >{item}</h1> 
+                                                        <button onClick={() => handleDeleteSinggle(item)} className='text-red-500 font-bold ' >X</button>
+                                                </div>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
-                                ))
-                            }
-                        </div>
+                            </div>
+                            <Search
+                                ref={refProduckScroll}
+                                data={filterData}
+                                onScroll={handleScroll}
+                            />
+                            </div>
                     </div>
                 )
             }
