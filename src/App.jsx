@@ -9,6 +9,7 @@ import HomeScreen from './screen/HomeScreen'
 import OrderScreen from './screen/OrderScreen'
 import ProfileScreen from './screen/ProfileScreen'
 import DetailsCard from './components/DetailsCard'
+import MyOrder from './screen/MyOrder'
 // import DarkMode from './DarkMode'
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='search' element={<SearchScreen/>} />
         <Route path='order' element={<OrderScreen/>} />
         <Route path='profile' element={<ProfileScreen/>} />
+        <Route path='order' element={<MyOrder/>} />
       </Route>
     </Routes>
   // </DarkMode>
