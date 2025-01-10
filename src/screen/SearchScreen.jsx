@@ -113,7 +113,7 @@ const SearchScreen = () => {
     const [inputSearch, setInputSearch] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [clickValueINput, setClickValueInput] = useState(false)
-    const [filterData, setFileterData] = useState(combinedData)
+    const [filterData, setFileterData] = useState(dataProduck)
     const searchContainerRef = useRef(null)
     const [data, setData] = useState([])
     const [curent, setCurent] = useState(0)
@@ -172,16 +172,7 @@ const SearchScreen = () => {
             return prev.nameProduck.toLowerCase().includes(value.toLowerCase())
         })
 
-        const filterProduckAll = combinedData.produkAll.map((prev) => {
-            return {
-                ...prev,
-                produck :prev.produck.filter((e) => 
-                    e.nama_produck.toLowerCase().includes(value.toLowerCase())
-                )
-            }
-        })
-
-        setFileterData({ populer : filterDataProduckPopuler, produkAll : filterProduckAll })
+        setFileterData( filterDataProduck )
     }
 
 
@@ -246,7 +237,7 @@ const SearchScreen = () => {
         }
 
         const savedSearch = localStorage.getItem('searchValue')
-        if (savedSearch && typeof savedSearch === String && savedSearch.trim() !== '') {
+        if (savedSearch  && savedSearch.trim() !== '') {
             setSearchValue(savedSearch)
         }
 
@@ -281,7 +272,7 @@ const SearchScreen = () => {
         }
     }, [data])
 
-    // console.log(filterData);
+    console.log(filterData);
     
     
 
