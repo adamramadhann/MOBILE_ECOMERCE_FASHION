@@ -93,7 +93,6 @@ const SearchScreen = () => {
     const [searchValue, setSearchValue] = useState('')
     const [clickValueINput, setClickValueInput] = useState(false)
     const [filterData, setFileterData] = useState(dataProduck)
-    const [filterDataAll, setFileterDataAll] = useState(dataProduckAll)
     const searchContainerRef = useRef(null)
     const [data, setData] = useState([])
     const [curent, setCurent] = useState(0)
@@ -152,19 +151,7 @@ const SearchScreen = () => {
             return prev.nameProduck.toLowerCase().includes(value.toLowerCase())
         })
 
-
-        const dataAll = dataProduckAll.map((val) => {
-            const filterDataAll = val.produck.filter((prev) =>  {
-                return prev.nama_produck.toLowerCase().includes(value.toLowerCase())
-            })
-            return {...val, produck : filterDataAll}
-        })
-
-
-        setFileterData([
-            filterDataProduck,
-            dataAll.flatMap((prev) => prev.produck  )
-        ])
+        setFileterData( filterDataProduck )
     }
 
 
@@ -229,7 +216,7 @@ const SearchScreen = () => {
         }
 
         const savedSearch = localStorage.getItem('searchValue')
-        if (savedSearch && typeof savedSearch === String && savedSearch.trim() !== '') {
+        if (savedSearch  && savedSearch.trim() !== '') {
             setSearchValue(savedSearch)
         }
 
@@ -264,7 +251,7 @@ const SearchScreen = () => {
         }
     }, [data])
 
-    console.log(data);
+    console.log(filterData);
     
     
 
@@ -353,19 +340,19 @@ const SearchScreen = () => {
                             onScroll={handleScroll}
                         />
                         </div>
-                        {/* <div>
-                            {
-                                filterDataAll.map((val) => (
-                                    <div>
-                                        {
-                                            val.produck.map((e) => (
-                                                <h1>{e.brand}</h1>
-                                            ))
-                                        }
-                                    </div>
-                                ))
-                            }
-                        </div> */}
+                            {/* <div>
+                                {
+                                    filterDataAll.map((val) => (
+                                        <div>
+                                            {
+                                                val.produck.map((e) => (
+                                                    <h1>{e.brand}</h1>
+                                                ))
+                                            }
+                                        </div>
+                                    ))
+                                }
+                            </div> */}
                     </div>
                 )
             }
