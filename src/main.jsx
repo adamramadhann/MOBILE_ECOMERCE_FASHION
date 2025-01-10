@@ -4,13 +4,16 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import DarkMode from './DarkMode.jsx'
+import SaveCardContext from './SaveCardContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-    <DarkMode>
-    <App />
-    </DarkMode>
+      <SaveCardContext>
+        <DarkMode>
+          <App />
+        </DarkMode>
+      </SaveCardContext>
     </BrowserRouter>
   </StrictMode>,
 )
