@@ -22,7 +22,7 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
 
   return (
     <div className='w-full overflow-y-auto hide-scrollbar h-[100dvh]  space-y-5'>
-      <span className={`w-full flex items-center justify-between ${!data.populer.length && 'hidden'} `}>
+      <span className={`w-full flex items-center justify-between ${!data.length && 'hidden'} `}>
         <h1 className='text-gray-500'>Popular this week</h1>
         <button className='text-sm text-gray-400'>Show All</button>
       </span>
@@ -32,7 +32,7 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
         className='flex  overflow-x-auto pb-3 snap-mandato ry scroll-smooth space-x-5'
       >
         {
-          card?.populer?.map((val, index) => (
+          data.map((val, index) => (
             <div onClick={() => handleClick(val, val.id)} key={index} className='flex-none'>
               <img src={val.img} alt={val.nameProduck} />
               <h1 className='text-sm font-semibold text-gray-600'>{val.nameProduck}</h1>
@@ -45,9 +45,8 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
         <h1 className='text-xl font-bold my-4' >Produck All</h1>
           <div className='w-full h-auto' >
           {
-            card?.produkAll?.map((e) => (
+            data?.map((val) => (
             <div className='w-full grid grid-cols-2  ' >
-               {e.produck.map((val) => (
               <div onClick={() => handleClick(val, val.id)} className='w-[126px] h-auto mx-auto grid gap-2  my-8 overflow-auto' >
                   <img src={val.img} alt="" />
                   <span className='' >
@@ -56,11 +55,10 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
                     <p>★★★★☆<span className='text-xs pl-2' >(10)</span></p>
                   </span>
               </div>
-             ))}
             </div>
             ))
           }
-          <div className='h-52' ></div>
+          <div className='h-52'></div>
           </div>
       </div>
     </div>
