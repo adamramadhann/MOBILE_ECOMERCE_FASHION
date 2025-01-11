@@ -339,7 +339,6 @@ const SearchScreen = () => {
                     <AiOutlineSearch size={20} />
                     <input
                         onClick={() => { setInputSearch(true) }}
-                        // onBlur={() => { if (searchValue.trim() === '') setInputSearch(false) }}
                         type="search"
                         placeholder='Search'
                         className='text-sm text-gray-500 outline-none'
