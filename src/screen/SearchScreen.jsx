@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlineDelete, AiOutlineLeft, AiOutlineRight, AiOutlineSearch } from 'react-icons/ai'
 import { BiGitCompare } from 'react-icons/bi'
 import Search from '../components/SearchProduck'
+import { Link } from 'react-router-dom';
 
 
 
@@ -105,7 +106,59 @@ const combinedData = {
     ]
 };
 
-console.log(combinedData);
+
+const dataProduck = [
+    {
+        id: 21,
+        img: '/Mask Group (1) copy.png',
+        nameProduck: 'Skrit Dress',
+        price: '$ 34.00',
+        category: 'pakaian',
+        brand: 'Zara'
+    },
+    {
+        id: 22,
+        img: '/Mask Group (2) copy.png',
+        nameProduck: 'Lihua Tonic White',
+        price: '$ 53.00',
+        category: 'beauty',
+        brand: 'Fenty Beauty'
+    },
+    {
+        id: 23,
+        img: '/Mask Group (1) copy.png',
+        nameProduck: 'Lihua Tonic White',
+        price: '$ 53.00',
+        category: 'beauty',
+        brand: 'L\'Oreal'
+    },
+    {
+        id: 24,
+        img: '/Mask Group (2) copy.png',
+        nameProduck: 'Lihua Tonic White',
+        price: '$ 53.00',
+        category: 'accessories',
+        brand: 'Tiffany & Co.'
+    },
+    {
+        id: 25,
+        img: '/Mask Group (1) copy.png',
+        nameProduck: 'Lihua Tonic White',
+        price: '$ 53.00',
+        category: 'accessories',
+        brand: 'Cartier'
+    },
+    {
+        id: 26,
+        img: '/Mask Group (2) copy.png',
+        nameProduck: 'Lihua Tonic White',
+        price: '$ 53.00',
+        category: 'accessories',
+        brand: 'Swarovski'
+    }
+]
+
+// console.log(dataProduck);
      
 
 const SearchScreen = () => {
@@ -168,11 +221,11 @@ const SearchScreen = () => {
     
  
     const handleSerch = (value) => {
-        const filterDataProduckPopuler = combinedData.populer.filter((prev) => {
+        const filterDataProduckPopuler = dataProduck.filter((prev) => {
             return prev.nameProduck.toLowerCase().includes(value.toLowerCase())
         })
 
-        setFileterData( filterDataProduck )
+        setFileterData( filterDataProduckPopuler )
     }
 
 
@@ -299,7 +352,7 @@ const SearchScreen = () => {
                 </button>
             </div>
 
-
+        <Link to={'/detailProduck'} >Detail</Link>
             {
                 !inputSearch && (
                     <div className={`flex flex-col gap-2 xl:gap-20 `}>
