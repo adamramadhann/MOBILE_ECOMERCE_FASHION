@@ -41,26 +41,6 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
           ))
         }
       </div>
-      <div className='w-ful h-[300px] ' >
-        <h1 className='text-xl font-bold my-4' >Produck All</h1>
-          <div className='w-full h-auto' >
-          {
-            data?.map((val) => (
-            <div className='w-full grid grid-cols-2  ' >
-              <div onClick={() => handleClick(val, val.id)} className='w-[126px] h-auto mx-auto grid gap-2  my-8 overflow-auto' >
-                  <img src={val.img} alt="" />
-                  <span className='' >
-                    <h1 className='text-xs text-gray-600 ' >{val.id}</h1>
-                    <p className='text-xs text-gray-400 mt-1  ' >$ {val.price}</p>
-                    <p>★★★★☆<span className='text-xs pl-2' >(10)</span></p>
-                  </span>
-              </div>
-            </div>
-            ))
-          }
-          <div className='h-52'></div>
-          </div>
-      </div>
     </div>
   );
 });
