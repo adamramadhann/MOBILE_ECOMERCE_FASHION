@@ -6,6 +6,21 @@ import { GiFurShirt } from 'react-icons/gi';
 import { LuShirt } from 'react-icons/lu';
 import { useOutletContext } from 'react-router-dom';
 
+const dataDiscount = [
+    {
+        sale : '20%'
+    },
+    {
+        sale : '40%'
+    },
+    {
+        sale : '60%'
+    },
+    {
+        sale : '80%'
+    },
+]
+
 const FilterProduck = ({ style, openModal, closeModal }) => {
     const [dolar, setDolar] = useState(10);
     const [buttonActive, setButtonActive] = useState({
@@ -13,6 +28,12 @@ const FilterProduck = ({ style, openModal, closeModal }) => {
         startActive : false,
         selectCatagory : null
     });
+    const [removeDiscount, setRemoveDiscount] = useState(dataDiscount)
+    const [ aprrove, setApprove ] = useState(false)
+
+    const hadnleApproveActive = () => {
+        setApprove((val) => !val)
+    }
 
     const handleColorActive = (index) => {
         setButtonActive(val => ({
@@ -145,22 +166,13 @@ const FilterProduck = ({ style, openModal, closeModal }) => {
                 },
             ]
         },
-    ]
+    ]   
 
-    const dataDiscount = [
-        {
-            sale : '20%'
-        },
-        {
-            sale : '40%'
-        },
-        {
-            sale : '60%'
-        },
-        {
-            sale : '80%'
-        },
-    ]
+
+    const handleDeleteDiscount = (e) => {
+        const dataFilter = removeDiscount.filter((prev) => prev.sale !== e)
+        setRemoveDiscount(dataFilter) 
+    }
 
     const handleDolarValue = (e) => {
         setDolar(Number(e.target.value));
@@ -205,9 +217,9 @@ const FilterProduck = ({ style, openModal, closeModal }) => {
                 />
             </div> */}
             {/* color */}
-            <div className='space-y-2' >
+            <div className='' >
                 <h1 className='font-semibold' >Color</h1>
-                <div className='flex items-center justify-between' >
+                <div className='flex items-center mt-2 justify-between' >
                     {
                         dataColor.map(((val, index) => (
                             <span onClick={() => handleColorActive(index)} className={`${val.bg_color} w-6 h-6 p-1 rounded-full block ${ buttonActive.colorActiv === index ? 'scale-125 shadow-[0_0_15px_rgba] ' : ''} `} ></span>
@@ -216,40 +228,40 @@ const FilterProduck = ({ style, openModal, closeModal }) => {
                 </div>
             </div>
             {/* star */}
-            <div className='space-y-2' >
+            <div className='' >
                 <h1>Star Rating</h1>
-                <div className=' w-full flex items-center justify-between' >
+                <div className=' w-full mt-3 flex items-center justify-between' >
                     {
                         dataStar.map((val, index) => (
-                            <span onClick={() => handleStarActive(index)}  className={`flex items-center justify-center text-xs gap-[2px   ] h-10 w-10 border-2 border-black rounded-full p-1  ${buttonActive.startActive === index ? 'bg-black text-white border-white' : ''}`} ><FaStar size={15} /> {index + 1} </span>
+                            <span onClick={() => handleStarActive(index)}  className={`flex items-center justify-center text-xs gap-[2px   ] h-9 w-9 border-2 border-black rounded-full p-1  ${buttonActive.startActive === index ? 'bg-black text-white border-white' : ''}`} ><FaStar size={13} /> {index + 1} </span>
                         ))
                     }
                 </div>
             </div>
             {/* select catagory */}
-            <div className='space-y-4' >
-                <div onClick={handleSelectCaagory} className='flex w-full h-auto rounded-full border p-2 py-3 items-center justify-between' >
-                    <span className='flex font-semibold items-center gap-2' >
-                        <LuShirt size={25} />
+            <div className='space-y-4 relative ' >
+                <div onClick={handleSelectCaagory} className='flex px-3 w-full h-auto rounded-full border p-2 py-3 items-center justify-between' >
+                    <span className='flex font-semibold  text-sm items-center gap-2' >
+                        <LuShirt size={20 } />
                         Catagory
                     </span>
-                    <AiOutlineDown size={20} />
+                    { buttonActive.selectCatagory ? <AiOutlineDown size={20} /> : < AiOutlineRight  size={20} />}   
                 </div>
-                <div className={`overflow-auto  transition-all transform px-3 duration-1000 space-y-3 origin-top ${buttonActive.selectCatagory ? 'opacity-100 max-h-[200px]' : 'opacity-0 scale-y-0 max-h-0'}`} >
+                <div className={`overflow-auto w-full absolute bg-white  transition-all transform px-3 duration-1000 space-y-3 origin-top ${buttonActive.selectCatagory ? 'opacity-100 ' : 'opacity-0 scale-y-0 '}`} >
                    {
                     dataCatagoriSelect.map((val, index) => (
                         <div className='border-b pb-3' >
                             <button onClick={() => setButtonActive(e => ({
                                 ...e,
                                 selectCatagory : val.type
-                            }))} className={`flex items-center border- pb-3 justify-between text-sm w-full`} >{val.type} <span className='flex items-center gap-2' ><AiOutlineRight/></span></button>
+                            }))} className={`flex items-center border- pb-3 justify-between text-sm w-full`} >{val.type} <span className='flex items-center gap-2' >{ buttonActive.selectCatagory === val.type ? <AiOutlineDown size={20} /> : < AiOutlineRight  size={20} />}</span></button>
                                 {
                                     buttonActive.selectCatagory === val.type && (
-                                        <div onClick={(e) => e.stopPropagation()} className={`${buttonActive.selectCatagory  ? 'block' : 'hidden'}`}  >
+                                        <div className={` overflow-hidden transition-all transform duration-500 origin-top ${buttonActive.selectCatagory  ? 'opacity-100' : 'opacity-0 scale-y-0 '}`}  >
                                             {
                                                 val.catagory.map((val) => (
                                                     <div className='flex flex-col py-3 w-full' >
-                                                        <button className='w-full flex text-xs  justify-between ' >{val.title} <span className='flex items-center gap-2 ' >{val.amount} <AiOutlineRight/></span></button>
+                                                        <button className='w-full flex text-xs  justify-between ' >{val.title} <span className='flex items-center gap-2 ' >{val.amount}</span></button>
                                                     </div>
                                                 ))
                                             }
@@ -266,18 +278,18 @@ const FilterProduck = ({ style, openModal, closeModal }) => {
                 <h1>Discoutn</h1>
                 <div className='w-full mt-3 flex flex-wrap gap-3 ' >
                    {
-                    dataDiscount.map((val) => (
+                    removeDiscount.map((val) => (
                         <div className='w-[120px] flex items-center justify-center  gap-3 text-center text-sm  border rounded-full py-2' >
                             <p>{val.sale} off</p>
-                            <button className='font-bold ' >X</button>
+                            <button onClick={()=> handleDeleteDiscount(val.sale)} className='font-bold ' >X</button>
                         </div>
                     ))
                    }
                 </div>
             </div>
             <div className='w-full flex justify-center gap-7' >
-                   <button className={`px-8 py-2 rounded-full border`} >Reset</button>
-                   <button className={`bg-green-400 px-8 py-2 rounded-full border`} >Apply</button>
+                   <button onClick={hadnleApproveActive} className={`px-8 py-2 rounded-full  ${aprrove ? 'bg-[#33302E] text-white ' : 'bg-white'} `} >Reset</button>
+                   <button onClick={hadnleApproveActive} className={` px-8 py-2 rounded-full   ${aprrove ? 'bg-white' : 'bg-[#33302E] text-white  '} `} >Apply</button>
             </div>
         </div>
        </div>
