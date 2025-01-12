@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineDown, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import { BiHeart } from 'react-icons/bi'
-import { BsChevronUp } from 'react-icons/bs'
 import { IoBag } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 
@@ -14,6 +13,7 @@ const [clickButton, setClickButton] = useState({
   accorReview : true,
   accorSemilar : true
 })
+
 
   const color = [
     {

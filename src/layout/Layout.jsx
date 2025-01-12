@@ -4,11 +4,20 @@ import { Link, Outlet, useLocation } from 'react-router-dom'
 import HeaderHome from '../components/HeaderHome'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import SideBar from '../components/SideBar'
+import FilterProduck from '../components/FilterProduck'
 
 const Layout = () => {
 
     const [sideActive, setSideActive] = useState(false)
+    const [isOpenModal, setIsOpenModal] = useState(false)
     const location = useLocation()
+
+    const handleOpenModal = (inputSearch) =>{
+       if(inputSearch) {
+        setIsOpenModal(!isOpenModal)
+        console.log("value input serach1",inputSearch)
+       }
+    }
 
     const judulHeader = [
         {
@@ -58,7 +67,7 @@ const Layout = () => {
     <div className='w-full scroll-smooth  relative overflow-hidden  h-[100dvh] ' >
        <div className='h-[95%] pt-2 pb-10' >
             <HeaderHome judul={judulActif} onCLick={() => setSideActive(true)} />
-            <Outlet/>
+            <Outlet context={{ handleOpenModal }} />
        </div>
         <div className='h-14 bg-white flex items-center absolute bottom-0 justify-between px-5 w-full ' >   
             {
@@ -70,6 +79,12 @@ const Layout = () => {
             }
         </div>
         <SideBar onClick={handleCloseSideBar} style={sideActive ? 'block' : 'hidden'} />
+        
+        <FilterProduck 
+            closeModal={() => setIsOpenModal(false)} 
+            openModal={isOpenModal}
+            style={isOpenModal ? 'blcok' : 'hidden'}
+        />
     </div>
   )
 }

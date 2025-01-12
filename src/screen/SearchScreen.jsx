@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlineDelete, AiOutlineLeft, AiOutlineRight, AiOutlineSearch } from 'react-icons/ai'
 import { BiGitCompare } from 'react-icons/bi'
 import Search from '../components/SearchProduck'
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
+import { TbMoodNeutralFilled } from 'react-icons/tb';
+import FilterProduck from '../components/FilterProduck';
 
 
 
@@ -170,7 +172,9 @@ const SearchScreen = () => {
     const searchContainerRef = useRef(null)
     const [data, setData] = useState([])
     const [curent, setCurent] = useState(0)
+    const [openModal, setOpenModal] = useState(false)
     const refProduckScroll = useRef()
+    const { handleOpenModal } = useOutletContext()
   
 
     const cardDetail = [
@@ -215,10 +219,6 @@ const SearchScreen = () => {
             ]
         },
     ]
-
-
-
-    
  
     const handleSerch = (value) => {
         const filterDataProduckPopuler = dataProduck.filter((prev) => {
@@ -227,10 +227,6 @@ const SearchScreen = () => {
 
         setFileterData( filterDataProduckPopuler )
     }
-
-
-
-
 
     const handleScroll = () => {
         if(refProduckScroll.current) {
@@ -262,7 +258,6 @@ const SearchScreen = () => {
             // setClickValueInput(true)
         }
     }
-    
 
 
     const handleRemoveLocalStorage = (e) => {
@@ -330,7 +325,7 @@ const SearchScreen = () => {
     
 
     return (
-        <div className={`w-full h-full flex smooth-scroll-container flex-col items-center hide-scroll space-y-5 ${activAcc ? 'overflow-auto' : 'overflow-hidden'}`}>
+        <div className={`w-full relative h-full flex smooth-scroll-container flex-col items-center hide-scroll space-y-5 ${activAcc ? 'overflow-auto' : 'overflow-hidden'}`}>
             <div className='flex w-full items-center justify-center mt-2 gap-2'>
             <button onClick={() => setInputSearch(false)} className={`p-2 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.2)] ${inputSearch ? 'blcok' : 'hidden'} `}>
                     <AiOutlineLeft size={20} />
@@ -346,12 +341,10 @@ const SearchScreen = () => {
                         onChange={handleSearchValue}
                     />
                 </div>
-                <button onClick={handleSaveLocalStorage} className='p-2 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.2)]'>
+                <button onClick={() => handleOpenModal(inputSearch)}  className='p-2 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.2)]'>
                     <BiGitCompare size={20} />
                 </button>
             </div>
-
-        <Link to={'/detailProduck'} >Detail</Link>
             {
                 !inputSearch && (
                     <div className={`flex flex-col gap-2 xl:gap-20 `}>
@@ -416,6 +409,7 @@ const SearchScreen = () => {
                     </div>
                 )
             }
+            {/* <FilterProduck style={`${openModal ? 'blcok' : 'hidden'}`} /> */}
         </div>
     )
 }
