@@ -63,46 +63,46 @@ const combinedData = {
         {
             type: 'accessories',
             produck: [
-                {id : 13,img: '/Mask Group (2) copy.png', nama_produck: 'Kalung Emas',price : '10.00' ,brand: 'Tiffany & Co.' },
-                {id : 14,img: '/Mask Group (2) copy.png', nama_produck: 'Gelang Berlian',price : '10.00' ,brand: 'Cartier' },
-                {id : 15,img: '/Mask Group (2) copy.png', nama_produck: 'Anting Berlian',price : '10.00' ,brand: 'Swarovski' },
-                {id : 16,img: '/Mask Group (2) copy.png', nama_produck: 'Jam Tangan',price : '10.00' ,brand: 'Rolex' }
+                {id : 13,img: '/Mask Group (2) copy.png', nama_produck: 'Kalung Emas',price : '$ 10.00' ,brand: 'Tiffany & Co.' },
+                {id : 14,img: '/Mask Group (2) copy.png', nama_produck: 'Gelang Berlian',price : '$ 10.00' ,brand: 'Cartier' },
+                {id : 15,img: '/Mask Group (2) copy.png', nama_produck: 'Anting Berlian',price : '$ 10.00' ,brand: 'Swarovski' },
+                {id : 16,img: '/Mask Group (2) copy.png', nama_produck: 'Jam Tangan',price : '$ 10.00' ,brand: 'Rolex' }
             ]
         },
         {
             type: 'pakaian',
             produck: [
-                {id : 17,img: '/Mask Group (2) copy.png', nama_produck: 'Kaos',price : '10.00' ,brand: 'Zara' },
-                {id : 18,img: '/Mask Group (2) copy.png', nama_produck: 'Kemeja Formal',price : '10.00' ,brand: 'H&M' },
-                {id : 19,img: '/Mask Group (2) copy.png', nama_produck: 'Jaket Bomber',price : '10.00' ,brand: 'Uniqlo' },
-                {id : 20,img: '/Mask Group (2) copy.png', nama_produck: 'Sweater Hoodie',price : '10.00' ,brand: 'Nike' }
+                {id : 17,img: '/Mask Group (2) copy.png', nama_produck: 'Kaos',price : '$ 10.00' ,brand: 'Zara' },
+                {id : 18,img: '/Mask Group (2) copy.png', nama_produck: 'Kemeja Formal',price : '$ 10.00' ,brand: 'H&M' },
+                {id : 19,img: '/Mask Group (2) copy.png', nama_produck: 'Jaket Bomber',price : '$ 10.00' ,brand: 'Uniqlo' },
+                {id : 20,img: '/Mask Group (2) copy.png', nama_produck: 'Sweater Hoodie',price : '$ 10.00' ,brand: 'Nike' }
             ]
         },
         {
             type: 'celana',
             produck: [
-                {id :  1,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Jeans',price : '10.00' ,brand: 'Levi\'s' },
-                {id : 2,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Chinos',price : '10.00' ,brand: 'Dockers' },
-                {id : 3,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Pendek',price : '10.00' ,brand: 'Adidas' },
-                {id : 4,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Jogger',price : '10.00' ,brand: 'Puma' }
+                {id :  1,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Jeans',price : '$ 10.00' ,brand: 'Levi\'s' },
+                {id : 2,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Chinos',price : '$ 10.00' ,brand: 'Dockers' },
+                {id : 3,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Pendek',price : '$ 10.00' ,brand: 'Adidas' },
+                {id : 4,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Jogger',price : '$ 10.00' ,brand: 'Puma' }
             ]
         },
         {
             type: 'beauty',
             produck: [
-                {id : 5,img: '/Mask Group (2) copy.png', nama_produck: 'Lipstik Matte',price : '10.00' ,brand: 'MAC' },
-                {id : 6,img: '/Mask Group (2) copy.png', nama_produck: 'Foundation',price : '10.00' ,brand: 'Fenty Beauty' },
-                {id : 7,img: '/Mask Group (2) copy.png', nama_produck: 'Masker Wajah',price : '10.00' ,brand: 'L\'Oreal' },
-                {id : 8,img: '/Mask Group (2) copy.png', nama_produck: 'Parfum',price : '10.00' ,brand: 'Chanel' }
+                {id : 5,img: '/Mask Group (2) copy.png', nama_produck: 'Lipstik Matte',price : '$ 10.00' ,brand: 'MAC' },
+                {id : 6,img: '/Mask Group (2) copy.png', nama_produck: 'Foundation',price : '$ 10.00' ,brand: 'Fenty Beauty' },
+                {id : 7,img: '/Mask Group (2) copy.png', nama_produck: 'Masker Wajah',price : '$ 10.00' ,brand: 'L\'Oreal' },
+                {id : 8,img: '/Mask Group (2) copy.png', nama_produck: 'Parfum',price : '$ 10.00' ,brand: 'Chanel' }
             ]
         },
         {
             type: 'sepatu_sandal',
             produck: [
-                {id : 9,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Sneaker',price : '10.00' ,brand: 'Adidas' },
-                {id : 10,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Formal',price : '10.00' ,brand: 'Gucci' },
-                {id : 11,img: '/Mask Group (2) copy.png', nama_produck: 'Sandal Santai',price : '10.00' ,brand: 'Havaianas' },
-                {id : 12,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Boots',price : '10.00' ,brand: 'Timberland' }
+                {id : 9,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Sneaker',price : '$ 10.00' ,brand: 'Adidas' },
+                {id : 10,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Formal',price : '$ 10.00' ,brand: 'Gucci' },
+                {id : 11,img: '/Mask Group (2) copy.png', nama_produck: 'Sandal Santai',price : '$ 10.00' ,brand: 'Havaianas' },
+                {id : 12,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Boots',price : '$ 10.00' ,brand: 'Timberland' }
             ]
         }
     ]

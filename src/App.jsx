@@ -4,13 +4,15 @@ import Home from './login/Home'
 import GetStartedPage from './login/GetStartedPage'
 import SearchScreen from './screen/SearchScreen'
 import Layout from './layout/Layout'
-import Notivication from './screen/NotivicationHome'
 import HomeScreen from './screen/HomeScreen'
 import OrderScreen from './screen/OrderScreen'
 import ProfileScreen from './screen/ProfileScreen'
 import DetailsCard from './components/DetailsCard'
 import MyOrder from './screen/MyOrder'
-import FilterProduck from './components/FilterProduck'
+import CheckoutScreen from './screen/checkouth/CheckoutScreen'
+import Notivication from './components/NotivicationHome'
+import CheckouthLayouth from './layout/CheckouthLayouth'
+import MyCard from './screen/checkouth/MyCard'
 
 const App = () => {
   
@@ -20,6 +22,10 @@ const App = () => {
       <Route path='/' element={<Home/>} />
       <Route path='/getStarted' element={<GetStartedPage/>} />
       <Route path='/detailProduck' element={<DetailsCard/>} />
+      <Route path='/myCard' element={<MyCard/>} />
+      <Route path='/checkout' element={<CheckouthLayouth/>}>
+      <Route index element={< CheckoutScreen/>} />
+      </Route>
       <Route path='/layout' element={<Layout/>}  >
         <Route index element={<HomeScreen/>} />
         <Route path='notif' element={<Notivication/>} />

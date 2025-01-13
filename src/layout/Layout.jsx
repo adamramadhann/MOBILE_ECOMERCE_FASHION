@@ -10,7 +10,6 @@ const Layout = () => {
 
     const [sideActive, setSideActive] = useState(false)
     const [isOpenModal, setIsOpenModal] = useState(false)
-    const [inputSearche, setInputSearche] = useState(false)
     const location = useLocation()
 
     const handleOpenModal = (inputSearch) =>{
@@ -67,11 +66,7 @@ const Layout = () => {
   return (
     <div className='w-full scroll-smooth  relative overflow-hidden  h-[100dvh] ' >
        <div className='h-[95%] pt-2 pb-10' >
-        {
-            !inputSearche && (
-                <HeaderHome judul={judulActif} onCLick={() => setSideActive(true)} />
-            )
-        }
+            <HeaderHome judul={judulActif} onCLick={() => setSideActive(true)} />
             <Outlet context={{ handleOpenModal }} />
        </div>
         <div className='h-14 bg-white flex items-center absolute bottom-0 justify-between px-5 w-full ' >   

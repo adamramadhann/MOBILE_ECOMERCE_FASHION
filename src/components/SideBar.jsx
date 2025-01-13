@@ -3,6 +3,7 @@ import { AiOutlineExclamationCircle, AiOutlineHome, AiOutlineMail, AiOutlineSear
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../DarkMode'
+import { CiCreditCard1 } from 'react-icons/ci'
 
 const SideBar = ({ style, onClick }) => {
 
@@ -28,6 +29,11 @@ const SideBar = ({ style, onClick }) => {
             icon : <AiOutlineUser size={22} />,
             title : 'My Provile',
             path : 'profile'
+        },
+        {
+            icon : <CiCreditCard1 size={22} />,
+            title : 'My Card',
+            path : '/myCard'
         },
     ]
 
@@ -74,7 +80,8 @@ const SideBar = ({ style, onClick }) => {
             <div className='space-y-5 mt-5' >
                     {
                         Other.map((val) => (
-                            <Link key={val.title}  to={val.path} className='flex gap-2 items-center '  >{val.icon}
+                            <Link key={val.title}  to={val.path} className='flex gap-2 items-center '  >
+                                {val.icon}
                                 <h1 className='text-[15px] cursor-pointer select-none font-semibold' >{val.title}</h1>
                             </Link>
                         ))
