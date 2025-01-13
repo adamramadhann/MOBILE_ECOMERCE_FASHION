@@ -15,3 +15,15 @@
   .smooth-scroll-container {
     scroll-behavior: smooth; /* Mengaktifkan scroll halus */
   }
+
+  .step-text {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara teks dan garis */
+  }
+
+  .step-line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #4caf50; /* Warna garis */
+  }
