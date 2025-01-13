@@ -72,7 +72,7 @@ const combinedData = {
         {
             type: 'pakaian',
             produck: [
-                {id : 17,img: '/Mask Group (2) copy.png', nama_produck: 'Kaos Lengan Panjang',price : '10.00' ,brand: 'Zara' },
+                {id : 17,img: '/Mask Group (2) copy.png', nama_produck: 'Kaos',price : '10.00' ,brand: 'Zara' },
                 {id : 18,img: '/Mask Group (2) copy.png', nama_produck: 'Kemeja Formal',price : '10.00' ,brand: 'H&M' },
                 {id : 19,img: '/Mask Group (2) copy.png', nama_produck: 'Jaket Bomber',price : '10.00' ,brand: 'Uniqlo' },
                 {id : 20,img: '/Mask Group (2) copy.png', nama_produck: 'Sweater Hoodie',price : '10.00' ,brand: 'Nike' }
@@ -176,7 +176,10 @@ const SearchScreen = () => {
     const refProduckScroll = useRef()
     const { handleOpenModal } = useOutletContext()
 
-    console.log(filterData);
+
+    const { hideHeaderHome, setInputSearche} = useOutletContext()
+
+    console.log(searchValue);
     
   
 
@@ -229,12 +232,12 @@ const SearchScreen = () => {
         })
 
         const dataProduckAll = combinedData.produkAll.reduce((acc, curr) => {
-            const filterDataAll =  curr.produck.filter(item => item.nama_produck.includes(value))
+            const filterDataAll =  curr.produck.filter(item => item.nama_produck.toLowerCase().includes(value.toLowerCase()))
 
             if(filterDataAll.length > 0)  {
                 acc.push({
                     type : curr.type,
-                    produck : curr.produck
+                    produck : filterDataAll
                 })
             }
             return acc
@@ -275,8 +278,11 @@ const SearchScreen = () => {
             const searchTerm = e.target.value;
             setSearchValue(searchTerm);
             handleSerch(searchTerm); 
+            setInputSearche(true);
+            
             // setClickValueInput(true)
         }
+        console.log(e);
     }
 
 
@@ -340,12 +346,29 @@ const SearchScreen = () => {
         }
     }, [data])
 
-    console.log(filterData);
-    
+    useEffect(() => {
+        // Set initial viewport height
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+        // Update on resize and orientation change
+        const handleResize = () => {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        };
+
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('orientationchange', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('orientationchange', handleResize);
+        };
+    }, []);
     
 
     return (
-        <div className={`w-full relative h-full flex smooth-scroll-container flex-col items-center hide-scroll space-y-5 ${activAcc ? 'overflow-auto' : 'overflow-hidden'}`}>
+        <div className={`w-full  fixed  h-full flex overflow-hidden smooth-scroll-container flex-col items-center hide-scroll space-y-5 ${activAcc ? 'overflow-auto' : 'overflow-hidden'}`}>
             <div className='flex w-full items-center justify-center mt-2 gap-2'>
             <button onClick={() => setInputSearch(false)} className={`p-2 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.2)] ${inputSearch ? 'blcok' : 'hidden'} `}>
                     <AiOutlineLeft size={20} />
@@ -382,8 +405,6 @@ const SearchScreen = () => {
                                     </div>
                                     <img className='absolute right-0' src={val.img} alt="" />
                                 </div>
-
-                                {/* Menampilkan div dengan detail items */}
                                 <div className={`h-[400px] w-full transition-all duration-1000 ease-in-out origin-top ${activAcc === index ? 'opacity-100 max-h-[250px] py-3' : 'opacity-0 max-h-0 scale-y-0'}`}>
                                     {val.items.map((e, idx) => (
                                         <div key={idx} className='flex items-center pt-10 justify-between'>
@@ -401,7 +422,7 @@ const SearchScreen = () => {
             {
                 inputSearch && (
                     <div className='w-full' >
-                        <div className={`w-full px-3 space-y-4 overflow-hidden  `} >
+                        <div className={`w-full px-3 overflow-hidden  `} >
                             <div className={`w-full `} >
                                     <div className={`w-full flex justify-between ${!data.length && 'hidden'} `} >
                                         <h1 className='text-lg text-gray-600 ' >Recent Searches</h1>
@@ -425,7 +446,7 @@ const SearchScreen = () => {
                                 data={filterData}
                                 onScroll={handleScroll}
                             />
-                            </div>
+                        </div>
                     </div>
                 )
             }
