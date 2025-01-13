@@ -14,6 +14,8 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
     setCard({...selectCard})
     navigate(`/detailProduck/${id}`)
   }
+
+  const dataProduck = data.produkAll.reduce((acc, value) => acc.concat(value.produck), []) 
   
   useEffect(() => {
     handleGetCard()
@@ -21,8 +23,9 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
   
 
   return (
-    <div className='w-full overflow-y-auto hide-scrollbar h-[100dvh]  space-y-5'>
-      <span className={`w-full flex items-center justify-between ${!data.length && 'hidden'} `}>
+    <div className='w-full overflow-y-auto hide-scrollbar h-[100dvh]  space-y-10'>
+    <div className='w-full space-y-5' >
+    <span className={`w-full flex items-center justify-between ${!data.populer.length && 'hidden'} `}>
         <h1 className='text-gray-500'>Popular this week</h1>
         <button className='text-sm text-gray-400'>Show All</button>
       </span>
@@ -32,7 +35,7 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
         className='flex  overflow-x-auto pb-3 snap-mandato ry scroll-smooth space-x-5'
       >
         {
-          data.map((val, index) => (
+          data?.populer?.map((val, index) => (
             <div onClick={() => handleClick(val, val.id)} key={index} className='flex-none'>
               <img src={val.img} alt={val.nameProduck} />
               <h1 className='text-sm font-semibold text-gray-600'>{val.nameProduck}</h1>
@@ -40,6 +43,21 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
             </div>
           ))
         }
+      </div>
+    </div>
+      <div className='space-y-5' >
+        <span>ini data produck all</span>
+                <div className='w-full flex overflow-x-auto scroll-smooth space-x-5' >
+                    {
+                      dataProduck.map((e) => (
+                        <div className='flex-none' >
+                          {e.type}
+                          <img src={e.img} alt="" />
+                          <h1>{e.nama_produck}</h1>
+                        </div>
+                      ))
+                    }
+                </div>
       </div>
     </div>
   );

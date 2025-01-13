@@ -168,13 +168,16 @@ const SearchScreen = () => {
     const [inputSearch, setInputSearch] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [clickValueINput, setClickValueInput] = useState(false)
-    const [filterData, setFileterData] = useState(dataProduck)
+    const [filterData, setFileterData] = useState(combinedData)
     const searchContainerRef = useRef(null)
     const [data, setData] = useState([])
     const [curent, setCurent] = useState(0)
     const [openModal, setOpenModal] = useState(false)
     const refProduckScroll = useRef()
     const { handleOpenModal } = useOutletContext()
+
+    console.log(filterData);
+    
   
 
     const cardDetail = [
@@ -221,11 +224,28 @@ const SearchScreen = () => {
     ]
  
     const handleSerch = (value) => {
-        const filterDataProduckPopuler = dataProduck.filter((prev) => {
+        const filterDataProduckPopuler = combinedData.populer.filter((prev) => {
             return prev.nameProduck.toLowerCase().includes(value.toLowerCase())
         })
 
-        setFileterData( filterDataProduckPopuler )
+        const dataProduckAll = combinedData.produkAll.reduce((acc, curr) => {
+            const filterDataAll =  curr.produck.filter(item => item.nama_produck.includes(value))
+
+            if(filterDataAll.length > 0)  {
+                acc.push({
+                    type : curr.type,
+                    produck : curr.produck
+                })
+            }
+            return acc
+        }, [])
+
+        setFileterData( (val => ({
+            ...val,
+            populer : filterDataProduckPopuler ,
+            produkAll: dataProduckAll
+        })) )
+
     }
 
     const handleScroll = () => {
@@ -238,17 +258,17 @@ const SearchScreen = () => {
     }
 
 
-    const handleSaveLocalStorage = (e) => {
-        e.preventDefault()
-        if (searchValue.toLocaleLowerCase().trim()) {
-            setData(prevData => {
-                const newData = [...prevData, searchValue]
-                localStorage.setItem('searchData', JSON.stringify(newData)) 
-                return newData
-            })
-            setSearchValue('') 
-        }
-    }
+    // const handleSaveLocalStorage = (e) => {
+    //     e.preventDefault()
+    //     if (searchValue.toLocaleLowerCase().trim()) {
+    //         setData(prevData => {
+    //             const newData = [...prevData, searchValue]
+    //             localStorage.setItem('searchData', JSON.stringify(newData)) 
+    //             return newData
+    //         })
+    //         setSearchValue('') 
+    //     }
+    // }
 
     const handleSearchValue = (e) => {
         if (e.target) {  
@@ -409,7 +429,6 @@ const SearchScreen = () => {
                     </div>
                 )
             }
-            {/* <FilterProduck style={`${openModal ? 'blcok' : 'hidden'}`} /> */}
         </div>
     )
 }
