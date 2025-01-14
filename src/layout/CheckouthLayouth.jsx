@@ -2,12 +2,12 @@ import React from 'react'
 import HeadersCheckout from '../components/HeadersCheckout'
 import { FaCreditCard, FaMapMarkerAlt } from 'react-icons/fa'
 import { BsCheckCircleFill } from 'react-icons/bs'
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 const CheckouthLayouth = () => {
   return (
     <div className='w-full p-5 h-[100dvh]' >
-        <div className='w-full  ' >
+        <div className='w-full z-50 ' >
             <div className='' >
                 <HeadersCheckout path={-1} title={'Check out'} />
             </div>
@@ -27,9 +27,13 @@ const CheckouthLayouth = () => {
                 <h1 className='text-3xl text-gray-700' >Shepping</h1>
             </span>
         </div>
-        <div className='mt-10' >
+        <div className='' >
             <Outlet/>
+            <Link to={'/checkout/step3'} >
+             <button className='bg-[#343434]  w-full py-3 rounded-full text-white' >Continue to payment</button>
+            </Link>
         </div>
+        <div className='h-5' ></div>
     </div>
   )
 }
