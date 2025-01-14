@@ -11,7 +11,7 @@ const CheckouthLayouth = () => {
             <div className='' >
                 <HeadersCheckout path={-1} title={'Check out'} />
             </div>
-            <div className='flex items-center mt-14 justify-between' >
+            <div className='flex items-center  px-3 mt-14 justify-between' >
             <FaMapMarkerAlt size={20} className='text-red-500' />
             <div className="flex-grow mx-2 relative">
                 <div className="absolute top-1/2 w-full border-t border-dotted border-gray-400 transform -translate-y-1/2"></div>
@@ -22,7 +22,7 @@ const CheckouthLayouth = () => {
             </div> 
             <BsCheckCircleFill size={20}  />
             </div>
-            <span className='my-5 block' >
+            <span className='my-8 block' >
                 <p className='text-gray-500 text-sm' >Step 1</p>
                 <h1 className='text-3xl text-gray-700' >Shepping</h1>
             </span>
