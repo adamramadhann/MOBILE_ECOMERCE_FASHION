@@ -27,3 +27,13 @@
     height: 2px;
     background-color: #4caf50; /* Warna garis */
   }
+
+  .border-dettod {
+    height: 2px; 
+    background: repeating-linear-gradient(to right, transparent, transparent 2px, gray 4px, gray 5px)
+  }
+
+  .border-dettod-bottom {
+    height: 40px;
+    background: repeating-linear-gradient(to bottom, transparent, transparent 2px, gray 4px, gray 10px);
+}

@@ -46,7 +46,7 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
       </div>
     </div>
       <div className='space-y-5' >
-        <span className='text-gray-500 text-xl font-bold ' >produck all</span>
+        <span className={`text-gray-500 text-xl font-bold ${!data.produkAll.length && 'hidden'} `} >produck all</span>
           <div style={{ scrollBehavior: 'smooth' }} className='w-full hide-scrollbar flex overflow-x-auto scroll-smooth space-x-5' >
               {
                 dataProduck.map((e) => (
