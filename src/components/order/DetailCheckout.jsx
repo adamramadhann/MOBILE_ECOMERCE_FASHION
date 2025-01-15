@@ -3,31 +3,37 @@ import { AiOutlineLeft } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
 const DetailCheckout = () => {
-    const [activeBtn, setActiveBtn] = useState('Return home')
+    const [activeBtn, setActiveBtn] = useState('Rate')
 
     const btnRate = [
         {
-            title : 'Return home'
+            title : 'Return home',
+            Path : '/layout'
         },
         {
-            title : 'Rate'
+            title : 'Rate',
+            Path : '/rate'
         },
     ]
   return (
     <div className='p-5 space-y-8 ' >
-        <div className='w-full flex items-center justify-between' >
-            <Link to={-1} >
-                <AiOutlineLeft size={20} />
-            </Link>
-            <h1 className='text-xl text-gray-700' >Order <span className='text-gray-400 text-lg' >#1514</span></h1>
-            <div></div>
-        </div>
-        <div className='w-[327px] px-5 flex justify-between items-center h-24 rounded-md bg-[#575757] text-white' >
+            <div className='w-full flex items-center justify-between' >
+                <span className='w-10 h-10 rounded-full shadow-lg flex items-center justify-center' >
+                    <Link to={-1}><AiOutlineLeft size={20} /></Link>
+                </span> 
+                <h1 className='text-xl text-gray-700' >Order <span className='text-gray-400 text-lg' >#1514</span></h1>
+                <div></div>
+            </div>
+        <div>
+        <Link to={'/track_order'} >
+        <div className='w-full px-5 flex justify-between items-center h-24 rounded-md bg-[#575757] text-white' >
             <div>
-                <h1 className='text-sm '>Your order is delivered</h1>
-                <p className='text-[10px]' >Rate product to get 5 points for collect.</p>
+                <h1 className='text-sm '>Track Your Order</h1>
+                <p className='text-[10px]' >Check the status of your order below.</p>
             </div>
             <img src="/image copy 12.png" alt="" className='w-20'  />
+        </div>
+        </Link>
         </div>
         <div className='w-full p-2 shadow-lg rounded-sm space-y-2 ' >
             <span className='flex items-center justify-between' >
@@ -78,7 +84,9 @@ const DetailCheckout = () => {
        <div className='flex items-center gap-8 justify-center' >
         {
             btnRate.map((e) => (
-            <button onClick={() => setActiveBtn(e.title)} className={`border ${activeBtn === e.title && 'bg-[#343434] text-white'} px-7 py-2 rounded-full`} >{e.title}</button>
+                <Link to={e.Path} >
+                    <button onClick={() => setActiveBtn(e.title)} className={`border ${activeBtn === e.title && 'bg-[#343434] text-white'} px-7 py-2 rounded-full`} >{e.title}</button>
+                </Link>
             ))
         }
        </div>

@@ -6,7 +6,6 @@ import SearchScreen from './screen/SearchScreen'
 import Layout from './layout/Layout'
 import HomeScreen from './screen/HomeScreen'
 import OrderScreen from './screen/OrderScreen'
-import ProfileScreen from './screen/ProfileScreen'
 import DetailsCard from './components/DetailsCard'
 import Notivication from './components/NotivicationHome'
 import MyCard from './screen/checkouth/MyCard'
@@ -14,7 +13,10 @@ import CheckouthLayouth from './layout/CheckouthLayouth'
 import Step from './screen/checkouth/step_checkouth/Step'
 import Step2 from './screen/checkouth/step_checkouth/Step2'
 import Step3 from './screen/checkouth/step_checkouth/Step3'
-import DetailCheckout from './components/DetailCheckout'
+import DetailCheckout from './components/order/DetailCheckout'
+import Rate from './components/order/Rate'
+import TrackOther from './components/TrackOther'
+import MyWhistList from './screen/MyWhistList'
 
 const App = () => {
   
@@ -25,6 +27,8 @@ const App = () => {
       <Route path='/getStarted' element={<GetStartedPage/>} />
       <Route path='/detailProduck' element={<DetailsCard/>} />
       <Route path='/myCard' element={<MyCard/>} />
+      <Route path='/rate' element={<Rate/>} />
+      <Route path='/track_order' element={<TrackOther/>} />
       <Route path='/detailCheckout' element={<DetailCheckout/>} />
       <Route path='/checkout' element={< CheckouthLayouth />} >
       <Route index element={<Step/>}/>
@@ -36,7 +40,7 @@ const App = () => {
         <Route path='notif' element={<Notivication/>} />
         <Route path='search' element={<SearchScreen/>} />
         <Route path='order' element={<OrderScreen/>} />
-        <Route path='profile' element={<ProfileScreen/>} />
+        <Route path='profile' element={<MyWhistList/>} />
       </Route>
     </Routes>
   // </DarkMode>
