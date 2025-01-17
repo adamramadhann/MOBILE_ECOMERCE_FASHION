@@ -11,6 +11,7 @@ const HeadersCheckout = ({ path,title }) => {
             </span> 
             <h1 className='text-lg font-bold text-gray-700' >{title}</h1>
             <div></div>
+            <div></div>
         </div>
     </div>
   )
