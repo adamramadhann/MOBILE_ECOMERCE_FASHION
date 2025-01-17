@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const OrderScreen = () => {
 
-  const [dataButtonFilter, setButtonFilter] = useState(0)
+  const [dataButtonFilter, setButtonFilter] = useState('Padding')
   const buttonFilter = [
     {
       text : 'Padding'
@@ -68,16 +68,16 @@ const OrderScreen = () => {
       <div className='flex pb-10 bg-white items-center justify-between' >
         {
           buttonFilter.map((e, index) => (
-          <button onClick={() => setButtonFilter(index) } className={`px-5 py-2 rounded-full ${dataButtonFilter === index && 'bg-[#43484B] text-white'}`} >{e.text}</button>
+          <button onClick={() => setButtonFilter(e.text) } className={`px-5 py-2 rounded-full ${dataButtonFilter === e.text && 'bg-[#43484B] text-white'}`} >{e.text}</button>
           ))
         }
       </div>
       <div className='overflow-auto space-y-10 px-2 -mt-10 pb-32 w-full h-full hide-scrollbar ' >
          {
-            dataOrder.map((val) => (
-              <div className='space-y-2 mt-5 p-5 shadow-[0_0_15px_rgba(0,0,0,0.2)] rounded-md ' >
-                  <span  className='flex w-full justify-between items-end'>
-                    <h1 className='text-xl font-bold' >Order #1524 </h1>
+            dataOrder.filter((val) => val.status === dataButtonFilter ).map((val, index) => (
+              <div className={`space-y-2 mt-5 p-5 shadow-[0_0_15px_rgba(0,0,0,0.2)] rounded-md`} >
+                  <span className='flex w-full justify-between items-end'>
+                    <h1 className='text-xl font-bold' >Order #{val.id} </h1>
                     <p className='text-xs' >13/05/2021</p>
                   </span>
                   <span className='text-gray-400 flex gap-3 items-center '  >
@@ -89,7 +89,7 @@ const OrderScreen = () => {
                     <p className='text-sm'  >Subtotal: <span className='text-gray-700 text-sm '  > $ 20.00</span></p>
                   </span>
                   <span className='flex w-full pt-2 justify-between items-center'  >
-                    <h1 className='text-red-500 text-[15px]' >PENDING</h1>
+                    <h1 className={`text-red-500 text-[15px]`} >{val.status}</h1>
                     <Link to={'/detailCheckout'} >
                       <button className='px-5 py-1 rounded-full border' >Details</button>
                     </Link>

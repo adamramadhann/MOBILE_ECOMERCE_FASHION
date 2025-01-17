@@ -37,13 +37,11 @@ const SideBar = ({ style, onClick }) => {
         },
     ]
 
-
-
     const Other = [
         {
             icon : <AiOutlineSetting  size={22}  />,
             title : 'Setting',
-            path : ''
+            path : '/setting'
         },
         {
             icon : <AiOutlineMail size={22}  />,
