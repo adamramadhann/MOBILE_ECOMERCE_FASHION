@@ -6,7 +6,7 @@ import HeadersCheckout from '../../components/HeadersCheckout'
 const MyCard = () => {
     const [amount, setAmount] = useState(1)
   return (
-    <div className=' space-y-16 p-5 w-full h-[100dvh]' >
+    <div className=' space-y-16 relative p-5 w-full h-[100dvh]' >
         <HeadersCheckout path={-1} title={'My Card'} />
         {/* card */}
         <div className='w-full space-y-10 pb-5 overflow-auto ' >
@@ -75,7 +75,7 @@ const MyCard = () => {
             </div>
         </div>
         <Link to={'/checkout'} >
-            <button className='w-full mt-10 rounded-full py-3 bg-[#343434] text-white' >Proceed to checkout</button>
+            <button className='w-[95%] absolute bottom-5  left-1/2 -translate-x-1/2 mt-10 rounded-full py-3 bg-[#343434] text-white' >Proceed to checkout</button>
         </Link>
         <div className='' ></div>
     </div>

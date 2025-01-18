@@ -3,7 +3,7 @@ import { AiOutlineExclamationCircle, AiOutlineHome, AiOutlineMail, AiOutlineSear
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../DarkMode'
-import { CiCreditCard1 } from 'react-icons/ci'
+import { CiCreditCard1, CiViewList } from 'react-icons/ci'
 
 const SideBar = ({ style, onClick }) => {
 
@@ -26,8 +26,8 @@ const SideBar = ({ style, onClick }) => {
             path : 'order'
         },
         {
-            icon : <AiOutlineUser size={22} />,
-            title : 'My Provile',
+            icon : <CiViewList size={22} />,
+            title : 'My Wishlist',
             path : 'profile'
         },
         {
