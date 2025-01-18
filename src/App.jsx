@@ -18,6 +18,8 @@ import Rate from './components/order/Rate'
 import TrackOther from './components/TrackOther'
 import MyWhistList from './screen/MyWhistList'
 import Setting from './components/Setting'
+import Profile from './screen/profile/Profile'
+import About from './components/About'
 
 const App = () => {
   
@@ -29,6 +31,8 @@ const App = () => {
       <Route path='/detailProduck' element={<DetailsCard/>} />
       <Route path='/myCard' element={<MyCard/>} />
       <Route path='/rate' element={<Rate/>} />
+      <Route path='/about' element={<About/>} />
+      <Route path='/profile' element={<Profile/>} />
       <Route path='/setting' element={<Setting/>} />
       <Route path='/track_order' element={<TrackOther/>} />
       <Route path='/detailCheckout' element={<DetailCheckout/>} />

@@ -5,6 +5,7 @@ import HeaderHome from '../components/HeaderHome'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import SideBar from '../components/SideBar'
 import FilterProduck from '../components/FilterProduck'
+import { CiViewList } from 'react-icons/ci'
 
 const Layout = () => {
 
@@ -52,7 +53,7 @@ const Layout = () => {
             path : '/layout/order'
         },
         {
-            icon :<AiOutlineUser size={30} />,
+            icon :<CiViewList size={30} />,
             path : '/layout/profile'
         },
     ]
