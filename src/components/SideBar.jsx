@@ -26,8 +26,8 @@ const SideBar = ({ style, onClick }) => {
             path : 'order'
         },
         {
-            icon : <CiViewList size={22} />,
-            title : 'My Wishlist',
+            icon : <AiOutlineUser size={22} />,
+            title : 'Profile',
             path : 'profile'
         },
         {
@@ -51,7 +51,7 @@ const SideBar = ({ style, onClick }) => {
         {
             icon :<AiOutlineExclamationCircle  size={22}  />,
             title : 'About',
-            path : ''
+            path : '/about'
         }
     ]
 
