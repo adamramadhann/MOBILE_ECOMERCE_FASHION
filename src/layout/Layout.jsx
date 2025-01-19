@@ -34,7 +34,7 @@ const Layout = () => {
             path : '/layout/order'
         },
         {
-            judul : 'My Wishlist',
+            judul : 'Profile Setting',
             path : '/layout/profile'
         },
     ]
@@ -53,7 +53,7 @@ const Layout = () => {
             path : '/layout/order'
         },
         {
-            icon :<CiViewList size={30} />,
+            icon :<AiOutlineUser size={30} />,
             path : '/layout/profile'
         },
     ]

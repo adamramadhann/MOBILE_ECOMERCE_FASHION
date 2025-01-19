@@ -20,6 +20,8 @@ import MyWhistList from './screen/MyWhistList'
 import Setting from './components/Setting'
 import Profile from './screen/profile/Profile'
 import About from './components/About'
+import Address from './screen/setting/Address'
+import Vocher from './screen/setting/Vocher'
 
 const App = () => {
   
@@ -31,9 +33,11 @@ const App = () => {
       <Route path='/detailProduck' element={<DetailsCard/>} />
       <Route path='/myCard' element={<MyCard/>} />
       <Route path='/rate' element={<Rate/>} />
+      <Route path='/address' element={<Address/>} />
+      <Route path='/vocher' element={<Vocher/>} />
       <Route path='/about' element={<About/>} />
       <Route path='/profile' element={<Profile/>} />
-      <Route path='/setting' element={<Setting/>} />
+      <Route path='/myWhistlist' element={<MyWhistList/>} />
       <Route path='/track_order' element={<TrackOther/>} />
       <Route path='/detailCheckout' element={<DetailCheckout/>} />
       <Route path='/checkout' element={< CheckouthLayouth />} >
@@ -46,7 +50,7 @@ const App = () => {
         <Route path='notif' element={<Notivication/>} />
         <Route path='search' element={<SearchScreen/>} />
         <Route path='order' element={<OrderScreen/>} />
-        <Route path='profile' element={<MyWhistList/>} />
+        <Route path='profile' element={<Setting/>} />
       </Route>
     </Routes>
   // </DarkMode>

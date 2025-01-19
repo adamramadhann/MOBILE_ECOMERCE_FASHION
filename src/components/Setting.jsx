@@ -4,21 +4,26 @@ import { FaSignOutAlt } from 'react-icons/fa'
 import { FaHeart, FaLocationDot, FaStar } from 'react-icons/fa6'
 import { MdDiscount } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import HeadersCheckout from './HeadersCheckout'
 
 const Setting = () => {
 
     const menuSetting = [
         {
             title : 'Address',
-            icon : <FaLocationDot size={22} />
+            icon : <FaLocationDot size={22} />,
+            path : '/address'
         },
         {
             title : 'Vocher',
-            icon : <MdDiscount size={22}  />
+            icon : <MdDiscount size={22}  />,
+            path : '/vocher'
         },
         {
-            title : 'My Whislist',
-            icon : <FaHeart size={22}  />
+            title : 'My Wishlist',
+            icon : <FaHeart size={22}  />,
+            path : '/myWhistlist'
+
         },
         {
             title : 'Rate this app',
@@ -45,7 +50,7 @@ const Setting = () => {
         <div className='grid gap-10 ' >
             {
                 menuSetting.map((val) => (
-                    <Link >
+                    <Link to={val.path} >
                         <div className='flex border-b pb-3 px-1 items-center justify-between' >
                             <span className='flex text-gray-400 items-center gap-3' >
                                 {val.icon}

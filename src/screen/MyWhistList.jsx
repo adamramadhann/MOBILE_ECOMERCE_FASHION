@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { MdOutlineStarPurple500 } from 'react-icons/md'
 import { dataBoard, image_all_items } from '../data/data'
 import { AiOutlineRight } from 'react-icons/ai'
+import HeadersCheckout from '../components/HeadersCheckout'
 
 const MyWhistList = () => {
 
@@ -64,16 +65,20 @@ console.log(btnActive);
 
   return (
     <div className='w-full p-5 h-full' >
-          <div className='w-full flex border h-auto' >
+              <HeadersCheckout title={'My Wishlist'} />
+         <div className='fixed top-11 bg-white left-1/2 -translate-x-1/2 flex items-end justify-center h-20 w-full' >
+         <div className='w-full flex border' >
             {
               btnTopBar.map((val, index) => (
                 <button key={index} onClick={() => setBtnActive(val.title)} className={`flex-1 py-2 ${btnActive === val.title && 'bg-black text-white'} `} >{val.title}</button>
               ))
             }
           </div>
-            {
+         </div>
+           <div className='w-full mt-28' >
+           {
               btnActive === 'All items' && (
-                <div className='grid pb-48 mt-5 hide-scrollbar grid-cols-2 gap-10 overflow-auto w-full h-[100dvh] ' >
+                <div className='grid mt-5 hide-scrollbar grid-cols-2 gap-10 overflow-auto w-full h-[100dvh] ' >
                 {
                   image_all_items.map((val) => (
                     <div className='w-[140px] h-[250px] ' >
@@ -158,10 +163,11 @@ console.log(btnActive);
                       </div>
                      ))
                     } 
-                    <div className='h-20' ></div>
+                    {/* <div className='h-20' ></div> */}
                 </div>
               )
-            }
+            } 
+           </div>
         </div>
   )
 }
