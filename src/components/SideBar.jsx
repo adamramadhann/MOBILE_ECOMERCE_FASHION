@@ -30,18 +30,13 @@ const SideBar = ({ style, onClick }) => {
             title : 'Profile',
             path : 'profile'
         },
-        {
-            icon : <CiCreditCard1 size={22} />,
-            title : 'My Card',
-            path : '/myCard'
-        },
     ]
 
     const Other = [
         {
-            icon : <AiOutlineSetting  size={22}  />,
-            title : 'Setting',
-            path : '/setting'
+            icon : <CiCreditCard1 size={22} />,
+            title : 'My Card',
+            path : '/myCard'
         },
         {
             icon : <AiOutlineMail size={22}  />,

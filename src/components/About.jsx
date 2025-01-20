@@ -1,6 +1,7 @@
 import React from 'react'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { img1, img2, img3, img4 } from '../data/data'
 
 const About = () => {
   return (
@@ -20,20 +21,20 @@ const About = () => {
         <div class="bg-gray-100 p-6 flex justify-center">
           <div class="grid grid-cols-2  gap-7 mt-10 w-full max-w-5xl">
             <div class="col-span-1 row-span-5">
-              <img src="/image copy 14.png" alt="Gambar 1" class="w-full h-[250px]  object-cover rounded-lg"/>
+              <img src={img1} alt="Gambar 1" class="w-full h-[250px]  object-cover rounded-lg"/>
             </div>
             
             <div class="col-span-1 row-span-2 -mt-5 h-[200px]" >
-              <img src="/image copy 14.png" alt="Gambar 2" class="w-full h-[200px] object-cover rounded-lg"/>
+              <img src={img2}  alt="Gambar 2" class="w-full h-[200px] object-cover rounded-lg"/>
             </div>
 
 
             <div class="col-span-1 row-span-5">
-              <img src="/image copy 14.png" alt="Gambar 1" class="w-full h-[250px] object-cover rounded-lg"/>
+              <img src={img3}  alt="Gambar 1" class="w-full h-[250px] object-cover rounded-lg"/>
             </div>
             
             <div class="col-span-1 row-span-2 h-[200px]" >
-              <img src="/image copy 14.png" alt="Gambar 2" class="w-full h-[200px]  object-cover rounded-lg"/>
+              <img src={img4}  alt="Gambar 2" class="w-full h-[200px]  object-cover rounded-lg"/>
             </div>
           </div>
         </div>

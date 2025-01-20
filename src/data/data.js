@@ -14,6 +14,10 @@ import gambarBoard13 from '/boardImage/image copy 15.png'
 import gambarBoard14 from '/boardImage/image copy.png'
 import gambarBoard15 from '/boardImage/image.png'
 
+    export const img1 = gambarBoard1
+    export const img2 = gambarBoard2
+    export const img3 = gambarBoard3
+    export const img4 = gambarBoard4
 
 export const dataBoard = [
     {
