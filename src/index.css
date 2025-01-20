@@ -37,3 +37,8 @@
     height: 40px;
     background: repeating-linear-gradient(to bottom, transparent, transparent 2px, gray 4px, gray 10px);
 }
+  /* .border-dettod-bottom-vocher {
+    height: 40px;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, transparent, transparent 2px, gray 4px, gray 4px);
+} */

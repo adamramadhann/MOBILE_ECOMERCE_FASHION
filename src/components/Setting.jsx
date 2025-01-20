@@ -5,6 +5,7 @@ import { FaHeart, FaLocationDot, FaStar } from 'react-icons/fa6'
 import { MdDiscount } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import HeadersCheckout from './HeadersCheckout'
+import { IoChatbubbleEllipses } from 'react-icons/io5'
 
 const Setting = () => {
 
@@ -27,7 +28,12 @@ const Setting = () => {
         },
         {
             title : 'Rate this app',
-            icon : <FaStar size={22}  />
+            icon : <FaStar size={22}  />,
+            path : '/rating'
+        },
+        {
+            title : 'Chat Support',
+            icon : <IoChatbubbleEllipses size={22}  />
         },
         {
             title : 'Log Out',
