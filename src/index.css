@@ -37,6 +37,17 @@
     height: 40px;
     background: repeating-linear-gradient(to bottom, transparent, transparent 2px, gray 4px, gray 10px);
 }
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 20px solid #E6E8EC; 
+  /* border-radius: 10px 10px ; */
+}
+
+
   /* .border-dettod-bottom-vocher {
     height: 40px;
     width: 2px;

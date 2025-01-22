@@ -23,6 +23,7 @@ import About from './components/About'
 import Address from './screen/setting/Address'
 import Vocher from './screen/setting/Vocher'
 import RattingSettingProfile from './screen/setting/RattingSettingProfile'
+import AdminService from './screen/setting/AdminService'
 
 const App = () => {
   
@@ -34,6 +35,7 @@ const App = () => {
       <Route path='/detailProduck' element={<DetailsCard/>} />
       <Route path='/myCard' element={<MyCard/>} />
       <Route path='/rate' element={<Rate/>} />
+      <Route path='/admn' element={<AdminService/>} />
       <Route path='/rating' element={<RattingSettingProfile/>} />
       <Route path='/address' element={<Address/>} />
       <Route path='/vocher' element={<Vocher/>} />
