@@ -33,7 +33,8 @@ const Setting = () => {
         },
         {
             title : 'Chat Support',
-            icon : <IoChatbubbleEllipses size={22}  />
+            icon : <IoChatbubbleEllipses size={22}  />,
+            path : '/admn'
         },
         {
             title : 'Log Out',
