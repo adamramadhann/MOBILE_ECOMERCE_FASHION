@@ -6,21 +6,17 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
   const {card,setCard} = useCard()
   const navigate = useNavigate()
 
-  const handleGetCard = () => {
-    if(card) return setCard(data)
-  }
-
   const handleClick = (selectCard, id) => {
-    setCard({...selectCard})
+    console.log(selectCard.price);
+    setCard(selectCard)
     navigate(`/detailProduck/${id}`)
   }
 
+  console.log("serchProduck", card);
+  
+
   const dataProduck = data.produkAll.reduce((acc, value) => acc.concat(value.produck), []) 
-  
-  useEffect(() => {
-    handleGetCard()
-  }, [card])
-  
+
 
   return (
     <div className='w-full overflow-y-auto hide-scrollbar h-[100dvh] '>
@@ -37,8 +33,8 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
         {
           data?.populer?.map((val, index) => (
             <div onClick={() => handleClick(val, val.id)} key={index} className='flex-none '>
-              <img src={val.img} alt={val.nameProduck} />
-              <h1 className='text-sm font-semibold text-gray-600'>{val.nameProduck}</h1>
+              <img className='w-[126px] rounded-md h-[162px] object-cover ' src={val.img} alt={val.nameProduck} />
+              <h1 className='text-sm mt-2 font-semibold text-gray-600'>{val.nameProduck}</h1>
               <p className='text-xs text-gray-500'>{val.price}</p>
             </div>
           ))
@@ -50,10 +46,10 @@ const Search = React.forwardRef(({ data, onScroll }, ref) => {
           <div style={{ scrollBehavior: 'smooth' }} className='w-full hide-scrollbar flex overflow-x-auto scroll-smooth space-x-5' >
               {
                 dataProduck.map((e) => (
-                  <div className='flex-none  w-[120px]' >
+                  <div onClick={() => handleClick(e, e.id)} className='flex-none  w-[120px]' >
                     {e.type}
-                    <img src={e.img} alt="" />
-                    <h1 className='text-sm font-semibold text-gray-600' >{e.nama_produck}</h1>
+                    <img className='w-[126px] rounded-md h-[162px]' src={e.img} alt="" />
+                    <h1 className='text-sm mt-2 font-semibold text-gray-600' >{e.nameProduck}</h1>
                     <p className='text-xs text-gray-400' >{e.price}</p>
                   </div>
                 ))

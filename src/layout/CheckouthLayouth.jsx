@@ -27,11 +27,11 @@ const CheckouthLayouth = () => {
             <div className='flex items-center gap-3 px-2 mt-14 justify-between' >
             <FaMapMarkerAlt size={22} className='text-red-500' />
             <div className="flex-grow  relative">
-                <div className="absolute top-1/2 w-full border-dotted  border-gray-400 transform -translate-y-1/2"></div>
+                <div className="absolute top-1/2 w-full border-dettod  border-gray-400 transform -translate-y-1/2"></div>
             </div>
             <FaCreditCard size={22}  />
             <div className='flex-grow relative ' >
-                <div className='top-1/2 w-full absolute  border-dotted  bg-gray-400 border-1 border-gray-400 transform -translate-y-1/2' ></div> 
+                <div className='top-1/2 w-full absolute  border-dettod  bg-gray-400 border-1 border-gray-400 transform -translate-y-1/2' ></div> 
             </div> 
             <BsCheckCircleFill size={22}  />
             </div>

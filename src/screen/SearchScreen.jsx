@@ -2,177 +2,22 @@ import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlineDelete, AiOutlineLeft, AiOutlineRight, AiOutlineSearch } from 'react-icons/ai'
 import { BiGitCompare } from 'react-icons/bi'
 import Search from '../components/SearchProduck'
-import { Link, useOutletContext } from 'react-router-dom';
-import { TbMoodNeutralFilled } from 'react-icons/tb';
-import FilterProduck from '../components/FilterProduck';
+import { useOutletContext } from 'react-router-dom';
+import { combinedData } from '../data/data';
 
 
 
-const combinedData = {
-    populer: [
-        {
-            id: 21,
-            img: '/Mask Group (1) copy.png',
-            nameProduck: 'Skrit Dress',
-            price: '$ 34.00',
-            category: 'pakaian',
-            brand: 'Zara'
-        },
-        {
-            id: 22,
-            img: '/Mask Group (2) copy.png',
-            nameProduck: 'Lihua Tonic White',
-            price: '$ 53.00',
-            category: 'beauty',
-            brand: 'Fenty Beauty'
-        },
-        {
-            id: 23,
-            img: '/Mask Group (1) copy.png',
-            nameProduck: 'Lihua Tonic White',
-            price: '$ 53.00',
-            category: 'beauty',
-            brand: 'L\'Oreal'
-        },
-        {
-            id: 24,
-            img: '/Mask Group (2) copy.png',
-            nameProduck: 'Lihua Tonic White',
-            price: '$ 53.00',
-            category: 'accessories',
-            brand: 'Tiffany & Co.'
-        },
-        {
-            id: 25,
-            img: '/Mask Group (1) copy.png',
-            nameProduck: 'Lihua Tonic White',
-            price: '$ 53.00',
-            category: 'accessories',
-            brand: 'Cartier'
-        },
-        {
-            id: 26,
-            img: '/Mask Group (2) copy.png',
-            nameProduck: 'Lihua Tonic White',
-            price: '$ 53.00',
-            category: 'accessories',
-            brand: 'Swarovski'
-        }
-    ],
-    produkAll: [
-        {
-            type: 'accessories',
-            produck: [
-                {id : 13,img: '/Mask Group (2) copy.png', nama_produck: 'Kalung Emas',price : '$ 10.00' ,brand: 'Tiffany & Co.' },
-                {id : 14,img: '/Mask Group (2) copy.png', nama_produck: 'Gelang Berlian',price : '$ 10.00' ,brand: 'Cartier' },
-                {id : 15,img: '/Mask Group (2) copy.png', nama_produck: 'Anting Berlian',price : '$ 10.00' ,brand: 'Swarovski' },
-                {id : 16,img: '/Mask Group (2) copy.png', nama_produck: 'Jam Tangan',price : '$ 10.00' ,brand: 'Rolex' }
-            ]
-        },
-        {
-            type: 'pakaian',
-            produck: [
-                {id : 17,img: '/Mask Group (2) copy.png', nama_produck: 'Kaos',price : '$ 10.00' ,brand: 'Zara' },
-                {id : 18,img: '/Mask Group (2) copy.png', nama_produck: 'Kemeja Formal',price : '$ 10.00' ,brand: 'H&M' },
-                {id : 19,img: '/Mask Group (2) copy.png', nama_produck: 'Jaket Bomber',price : '$ 10.00' ,brand: 'Uniqlo' },
-                {id : 20,img: '/Mask Group (2) copy.png', nama_produck: 'Sweater Hoodie',price : '$ 10.00' ,brand: 'Nike' }
-            ]
-        },
-        {
-            type: 'celana',
-            produck: [
-                {id :  1,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Jeans',price : '$ 10.00' ,brand: 'Levi\'s' },
-                {id : 2,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Chinos',price : '$ 10.00' ,brand: 'Dockers' },
-                {id : 3,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Pendek',price : '$ 10.00' ,brand: 'Adidas' },
-                {id : 4,img: '/Mask Group (2) copy.png', nama_produck: 'Celana Jogger',price : '$ 10.00' ,brand: 'Puma' }
-            ]
-        },
-        {
-            type: 'beauty',
-            produck: [
-                {id : 5,img: '/Mask Group (2) copy.png', nama_produck: 'Lipstik Matte',price : '$ 10.00' ,brand: 'MAC' },
-                {id : 6,img: '/Mask Group (2) copy.png', nama_produck: 'Foundation',price : '$ 10.00' ,brand: 'Fenty Beauty' },
-                {id : 7,img: '/Mask Group (2) copy.png', nama_produck: 'Masker Wajah',price : '$ 10.00' ,brand: 'L\'Oreal' },
-                {id : 8,img: '/Mask Group (2) copy.png', nama_produck: 'Parfum',price : '$ 10.00' ,brand: 'Chanel' }
-            ]
-        },
-        {
-            type: 'sepatu_sandal',
-            produck: [
-                {id : 9,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Sneaker',price : '$ 10.00' ,brand: 'Adidas' },
-                {id : 10,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Formal',price : '$ 10.00' ,brand: 'Gucci' },
-                {id : 11,img: '/Mask Group (2) copy.png', nama_produck: 'Sandal Santai',price : '$ 10.00' ,brand: 'Havaianas' },
-                {id : 12,img: '/Mask Group (2) copy.png', nama_produck: 'Sepatu Boots',price : '$ 10.00' ,brand: 'Timberland' }
-            ]
-        }
-    ]
-};
 
-
-const dataProduck = [
-    {
-        id: 21,
-        img: '/Mask Group (1) copy.png',
-        nameProduck: 'Skrit Dress',
-        price: '$ 34.00',
-        category: 'pakaian',
-        brand: 'Zara'
-    },
-    {
-        id: 22,
-        img: '/Mask Group (2) copy.png',
-        nameProduck: 'Lihua Tonic White',
-        price: '$ 53.00',
-        category: 'beauty',
-        brand: 'Fenty Beauty'
-    },
-    {
-        id: 23,
-        img: '/Mask Group (1) copy.png',
-        nameProduck: 'Lihua Tonic White',
-        price: '$ 53.00',
-        category: 'beauty',
-        brand: 'L\'Oreal'
-    },
-    {
-        id: 24,
-        img: '/Mask Group (2) copy.png',
-        nameProduck: 'Lihua Tonic White',
-        price: '$ 53.00',
-        category: 'accessories',
-        brand: 'Tiffany & Co.'
-    },
-    {
-        id: 25,
-        img: '/Mask Group (1) copy.png',
-        nameProduck: 'Lihua Tonic White',
-        price: '$ 53.00',
-        category: 'accessories',
-        brand: 'Cartier'
-    },
-    {
-        id: 26,
-        img: '/Mask Group (2) copy.png',
-        nameProduck: 'Lihua Tonic White',
-        price: '$ 53.00',
-        category: 'accessories',
-        brand: 'Swarovski'
-    }
-]
-
-// console.log(dataProduck);
      
 
 const SearchScreen = () => {
     const [activAcc, setActiveAcc] = useState(null)
     const [inputSearch, setInputSearch] = useState(false)
     const [searchValue, setSearchValue] = useState('')
-    const [clickValueINput, setClickValueInput] = useState(false)
     const [filterData, setFileterData] = useState(combinedData)
     const searchContainerRef = useRef(null)
     const [data, setData] = useState([])
     const [curent, setCurent] = useState(0)
-    const [openModal, setOpenModal] = useState(false)
     const refProduckScroll = useRef()
     const { handleOpenModal } = useOutletContext()
 
@@ -232,7 +77,7 @@ const SearchScreen = () => {
         })
 
         const dataProduckAll = combinedData.produkAll.reduce((acc, curr) => {
-            const filterDataAll =  curr.produck.filter(item => item.nama_produck.toLowerCase().includes(value.toLowerCase()))
+            const filterDataAll =  curr.produck.filter(item => item.nameProduck.toLowerCase().includes(value.toLowerCase()))
 
             if(filterDataAll.length > 0)  {
                 acc.push({
@@ -260,19 +105,6 @@ const SearchScreen = () => {
         }
     }
 
-
-    // const handleSaveLocalStorage = (e) => {
-    //     e.preventDefault()
-    //     if (searchValue.toLocaleLowerCase().trim()) {
-    //         setData(prevData => {
-    //             const newData = [...prevData, searchValue]
-    //             localStorage.setItem('searchData', JSON.stringify(newData)) 
-    //             return newData
-    //         })
-    //         setSearchValue('') 
-    //     }
-    // }
-
     const handleSearchValue = (e) => {
         if (e.target) {  
             const searchTerm = e.target.value;
@@ -280,7 +112,6 @@ const SearchScreen = () => {
             handleSerch(searchTerm); 
             setInputSearche(true);
             
-            // setClickValueInput(true)
         }
         console.log(e);
     }
@@ -347,11 +178,9 @@ const SearchScreen = () => {
     }, [data])
 
     useEffect(() => {
-        // Set initial viewport height
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-        // Update on resize and orientation change
         const handleResize = () => {
             const vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);

@@ -28,11 +28,10 @@ import AdminService from './screen/setting/AdminService'
 const App = () => {
   
   return (
-  // <DarkMode>
       <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/getStarted' element={<GetStartedPage/>} />
-      <Route path='/detailProduck' element={<DetailsCard/>} />
+      <Route path='/detailProduck/:id' element={<DetailsCard/>} />
       <Route path='/myCard' element={<MyCard/>} />
       <Route path='/rate' element={<Rate/>} />
       <Route path='/admn' element={<AdminService/>} />
@@ -57,7 +56,6 @@ const App = () => {
         <Route path='profile' element={<Setting/>} />
       </Route>
     </Routes>
-  // </DarkMode>
   )
 }
 
