@@ -3,6 +3,9 @@ import { FaGlasses } from "react-icons/fa";
 import { IoMdMale } from "react-icons/io";
 import { RiWomenLine } from "react-icons/ri";
 import { TiBrush } from "react-icons/ti";
+import { useCard } from '../SaveCardContext';
+import { useNavigate } from 'react-router-dom';
+import { image_all_items, imageFeature } from '../data/data';
 
 export const menuTopBarHomeScreen = [
     {
@@ -24,6 +27,15 @@ const HomeScreen = () => {
   const [curentIndexRecomanded, setCurentIndexRecomanded] = useState(0)
   const refFeature = useRef(null)
   const refRecomanded = useRef(null)
+  const {card,setCard} = useCard()
+  const naviget = useNavigate()
+
+
+
+  const handleDetailCard = (selectCard, id) => {
+    setCard(selectCard)
+    naviget(`/detailProduck/${id}`)
+  }
 
   const handleScrollFeature = () => {
     if(refFeature.current) {
@@ -44,49 +56,32 @@ const HomeScreen = () => {
     }
   }
 
-  const imageFeature = [
-    {
-      img : 'src/assets/Mask Group (1).png',
-      description : 'Turtleneck Sweater',
-      price : '$ 39.99'
-    },
-    {
-      img : 'src/assets/Mask Group (2).png',
-      description : 'Long Sleeve Dress',
-      price : '$ 45.00'
-    },
-    {
-      img : 'src/assets/Mask Group (3).png',
-      description : 'Sportwear Set',
-      price : '$ 50.00'
-    },
-    {
-      img : 'src/assets/Mask Group (2).png',
-      description : 'Long Sleeve Dress',
-      price : '$ 45.00'
-    },
-  ]
+
 
 
   const imageRecomanded = [
     {
+      id:40,
       img : 'src/assets/Mask Group (5).png',
-      description : 'White fashion hoodie',
+      nameProduck : 'White fashion hoodie',
       price : '$ 39.99'
     },
     {
+      id:41,
       img : 'src/assets/Mask Group (6).png',
-      description : 'Black fashion ',
+      nameProduck : 'Black fashion ',
       price : '$ 45.00'
     },
     {
+      id:42,
       img : 'src/assets/Mask Group (5).png',
-      description : 'White fashion hoodie',
+      nameProduck : 'White fashion hoodie',
       price : '$ 50.00'
     },
     {
+      id:44,
       img : 'src/assets/Mask Group (6).png',
-      description : 'Long Sleeve Dress',
+      nameProduck : 'Long Sleeve Dress',
       price : '$ 45.00'
     },
   ]
@@ -125,11 +120,11 @@ const HomeScreen = () => {
             className='flex overflow-x-auto hide-scrollbar snap-mandatory scroll-smooth hide scrollbar-hide gap-6'
             >
               {
-                imageFeature.map((val, index) => (
-                  <div className='flex-none  ' >
+                image_all_items.map((val, index) => (
+                  <div onClick={() => handleDetailCard(val, val.id)} className='flex-none  ' >
                     <div className='mt-2' >
-                        <img className='w-[126px] h-[172px]' src={val.img} alt="" />
-                        <h1 className='text-sm mt-3 text-gray-500 ' >{val.description}</h1>
+                        <img className='w-[126px] rounded-md h-[172px]' src={val.img} alt="" />
+                        <h1 className='text-sm mt-3 text-gray-500 ' >{val.nameProduck}</h1>
                         <p className='font-bold' >{val.price}</p>
                     </div>
                   </div>
@@ -160,7 +155,7 @@ const HomeScreen = () => {
                     <div className='flex items-center gap-5' >
                     <img  className='w-20 h-20 ' src={val.img} alt="" />
                     <div>
-                        <h1 className='text-sm text-gray-500' >{val.description}</h1>
+                        <h1 className='text-sm text-gray-500' >{val.nameProduck}</h1>
                         <p className='font-semibold' >{val.price}</p>
                     </div>
                     </div>

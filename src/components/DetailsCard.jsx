@@ -1,19 +1,30 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { AiOutlineDown, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import { BiHeart } from 'react-icons/bi'
 import { IoBag } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useCard } from '../SaveCardContext'
 
-const DetailsCard = () => {
+  const DetailsCard = () => {
+    const {card, setCard} = useCard()
+    const navigate = useNavigate()
+    const topRef = useRef()
 
-const [clickButton, setClickButton] = useState({
-  sizeProduck : 'M',
-  colorProduck : 'bg-[#E7C0A7]',
-  accor : true,
-  accorReview : true,
-  accorSemilar : true
-})
+  const [clickButton, setClickButton] = useState({
+    sizeProduck : 'M',
+    colorProduck : 'bg-[#E7C0A7]',
+    accor : true,
+    accorReview : true,
+    accorSemilar : true
+  })
 
+  const handleClickDetail = (selectCard,id) => {
+    setCard(selectCard)
+    navigate(`/detailProduck/${id}`)
+
+    topRef.current.scrollIntoView({behavior : 'smooth'})
+
+  }
 
   const color = [
     {
@@ -69,29 +80,34 @@ const [clickButton, setClickButton] = useState({
   ]
   const dataSemilarProduck = [
     {
-      merek : 'Gym Crop Top',
-      price : '$ 39.99',
-      img : 'public/image 55.png'
-    },
-    {
+      id:31,
       merek : 'Gym Crop Top',
       price : '$ 39.99',
       img : '/Mask Group(6).png'
     },
     {
-      merek : 'Gym Crop Top',
-      price : '$ 39.99',
-      img : 'public/image 55.png'
-    },
-    {
+      id:32,
       merek : 'Gym Crop Top',
       price : '$ 39.99',
       img : '/Mask Group(6).png'
     },
     {
+      id:33,
       merek : 'Gym Crop Top',
       price : '$ 39.99',
-      img : 'public/image 55.png'
+      img : '/Mask Group(6).png'
+    },
+    {
+      id:34,
+      merek : 'Gym Crop Top',
+      price : '$ 39.99',
+      img : '/Mask Group(6).png'
+    },
+    {
+      id:35,
+      merek : 'Gym Crop Top',
+      price : '$ 39.99',
+      img : '/Mask Group(6).png'
     },
   ]
 
@@ -134,9 +150,55 @@ const [clickButton, setClickButton] = useState({
     }))
   }
 
+  const colorName = [
+    {
+      clasName : 'bg-[#E7C0A7]', name :'Cream'
+    },
+    {
+      clasName : 'bg-black', name : 'black'
+    },
+    {
+      clasName : 'bg-[#EE6969]', name : 'Red'
+    },
+  ]
+
+  const addToCard = () => {
+    const cardItem = {
+      id : card.id,
+      nameProduck : card.nameProduck,
+      price : card?.price,
+      size : clickButton?.sizeProduck,
+      color : clickButton?.colorProduck,
+      img : card?.img
+    }
+
+    console.log(card);
+    
+
+    const getLocalStorage = JSON.parse(localStorage.getItem('card'))  || []
+    const updateCards = [...getLocalStorage, cardItem]
+
+    const updateData = updateCards.map((val) => {
+      const colorData = colorName.find((e) => e.clasName === val.color )
+      return {
+        ...val,
+        color : colorData ? colorData.name : null
+      }
+    })
+
+    localStorage.setItem('card', JSON.stringify(updateData))
+    alert('produck success add to My Card')
+
+    console.log(updateData);
+
+  }  
+
+
+  
+
 
   return (
-    <div className='w-full h-[100dvh] p-3 space-y-6 ' >
+    <div ref={topRef}  className='w-full h-[100dvh] p-3 space-y-6 ' >
       <div className="w-full relative max-h-[350px] ">
       <div className="flex absolute top-5 items-center justify-between w-full">
         <Link to={-1} ><AiOutlineLeft size={25} /></Link>
@@ -145,17 +207,17 @@ const [clickButton, setClickButton] = useState({
         </span>
       </div>
         <img
-          src="/image 87.png"
+          src={card?.img}
           alt=""
-          className="object-cover object-top  w-full max-h-[350px]"  
+          className="object-cover object-center  w-full max-h-[350px]"  
         />
       </div>
       <div className='flex items-start justify-between ' >
           <span>
-              <h1 className='text-xl font-semibold ' >Spoartweart Set</h1>
+              <h1 className='text-xl font-semibold ' >{card?.nameProduck}</h1>
               <h1 className='text-lg text-gray-500 ' >★★★★☆<span className='text-[12px] ml-1 ' >(83)</span></h1>
           </span>
-          <h1 className='text-2xl font-semibold text-gray-500 ' >$ 80.00</h1>
+          <h1 className='text-2xl font-semibold text-gray-500 ' >{card?.price}</h1>
       </div>
       <div className='flex w-full h-auto gap-16 pb-5  ' >
           <div className='flex-1 space-y-3 ' >
@@ -270,7 +332,7 @@ const [clickButton, setClickButton] = useState({
             <div className={`overflow-x-auto hide-scrollbar flex duration-1000 gap-5 scroll-smooth transition-all transform origin-top  ${clickButton.accorSemilar ? 'opacity-100 max-h-[500px] scale-y-100 ' : 'opacity-0 duration-1000 scale-y-0 max-h-0'}`} >
                   {
                     dataSemilarProduck.map((val) => (
-                      <div className='flex-none' >
+                      <div onClick={() => handleClickDetail(val, val.id)} className='flex-none' >
                           <img src={val.img} alt="" />
                           <span>  
                               <h1 className='text-[1rem]  ' >{val.merek}</h1>
@@ -284,7 +346,7 @@ const [clickButton, setClickButton] = useState({
         </div>
       </div>
       <div className='w-full h-20 text-white flex items-center justify-center rounded-[20px_20px_0_0] bg-black fixed bottom-0 left-1/2 -translate-x-1/2' >
-          <h1 className='font-bold text-lg flex gap-3 border-b-2 border-white pb-5  ' > <IoBag size={25} /> Add To Cart</h1>
+          <h1 onClick={addToCard} className='font-bold text-lg flex gap-3 border-b-2 border-white pb-5  ' > <IoBag size={25} /> Add To Cart</h1>
       </div>
     </div>
   )

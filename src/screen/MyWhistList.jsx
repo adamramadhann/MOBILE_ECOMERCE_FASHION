@@ -3,8 +3,17 @@ import { MdOutlineStarPurple500 } from 'react-icons/md'
 import { dataBoard, image_all_items } from '../data/data'
 import { AiOutlineRight } from 'react-icons/ai'
 import HeadersCheckout from '../components/HeadersCheckout'
+import { useCard } from '../SaveCardContext'
+import { useNavigate } from 'react-router-dom'
 
 const MyWhistList = () => {
+  const {card, setCard} = useCard()
+  const naviget = useNavigate()
+
+  const handleDetail = (select, id) => {
+    setCard(select)
+    naviget(`/detailProduck/${id}`)
+  }
 
   const [btnActive, setBtnActive] = useState('All items')
 
@@ -17,44 +26,6 @@ const MyWhistList = () => {
     },
   ]
 
-  const dataCard = [
-  {
-    img : '',
-    nama_produck : '',
-    price : '$ 80.00',
-    discount_price : ''
-  },
-  {
-    img : '',
-    nama_produck : '',
-    price : '$ 60.00',
-    discount_price : ''
-  },
-  {
-    img : '',
-    nama_produck : '',
-    price : '$ 70.00',
-    discount_price : ''
-  },
-  {
-    img : '',
-    nama_produck : '',
-    price : '$ 90.00',
-    discount_price : ''
-  },
-  {
-    img : '',
-    nama_produck : '',
-    price : '$ 50.00',
-    discount_price : ''
-  },
-  {
-    img : '',
-    nama_produck : '',
-    price : '$ 9s0.00',
-    discount_price : ''
-  },
-  ]
 
 
 
@@ -81,9 +52,9 @@ console.log(btnActive);
                 <div className='grid mt-5 hide-scrollbar grid-cols-2 gap-10 overflow-auto w-full h-[100dvh] ' >
                 {
                   image_all_items.map((val) => (
-                    <div className='w-[140px] h-[250px] ' >
+                    <div onClick={() => handleDetail(val, val.id)} className='w-[140px] h-[250px] ' >
                       <img src={val.img} alt="" className=' w-full h-[186px] object-cover ' />
-                      <h1 className='text-sm text-gray-500 mt-2 ' >Front Tie Mini Dress</h1>
+                      <h1 className='text-sm text-gray-500 mt-2 ' >{val.nameProduck}</h1>
                       <span className='flex gap-2 items-end' >
                         <p className='font-semibold' >$ 59.00</p>
                         <p className='text-sm line-through text-gray-400 ' >{val.discount_price}</p>
