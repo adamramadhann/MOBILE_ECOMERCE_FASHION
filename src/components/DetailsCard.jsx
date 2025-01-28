@@ -1,14 +1,20 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlineDown, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import { BiHeart } from 'react-icons/bi'
 import { IoBag } from 'react-icons/io5'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCard } from '../SaveCardContext'
+import { FaHeart } from 'react-icons/fa'
+import { useCardMW } from '../ContextMyWhislist'
 
   const DetailsCard = () => {
     const {card, setCard} = useCard()
+    const [heart, setHeart] = useState([])
+    const [isHeart, setIsHeart] = useState(false)
+    const [statusCard, setStatusCard] = useState(null)
     const navigate = useNavigate()
     const topRef = useRef()
+    const { saveCard,setSaveCard} = useCardMW()
 
   const [clickButton, setClickButton] = useState({
     sizeProduck : 'M',
@@ -112,7 +118,6 @@ import { useCard } from '../SaveCardContext'
   ]
 
 
-
   const handleClickSize = (value) => {
     setClickButton((e) => ({
       ...e,
@@ -193,7 +198,37 @@ import { useCard } from '../SaveCardContext'
 
   }  
 
+  const handleHeart = (e) => {
+    const getLocalStorage = JSON.parse(localStorage.getItem('heart')) || []
+    if(!Array.isArray(getLocalStorage)) {
+      getLocalStorage = []
+    }
 
+    const someLocalStorage = getLocalStorage.some((val) => val.id === card.id)
+    // setIsHeart(someLocalStorage)
+    if(!someLocalStorage) {
+      const updateData = [...getLocalStorage, card]
+      localStorage.setItem('heart', JSON.stringify(updateData))
+      setHeart(updateData)
+      setIsHeart(true)
+    } else {
+      const filterStorage = getLocalStorage.filter((val) => val.id !== card.id)
+      localStorage.setItem('heart', JSON.stringify(filterStorage))
+      setHeart(filterStorage)
+      setIsHeart(false)
+      setSaveCard(false)
+    }
+  }
+
+  useEffect(() => {
+    const getLocal = JSON.parse(localStorage.getItem('heart')) || []
+    const status = getLocal.some((prev) => prev.id === card.id)
+    setHeart(status)
+  }, [card.id])
+  
+
+
+  console.log(heart);
   
 
 
@@ -201,15 +236,19 @@ import { useCard } from '../SaveCardContext'
     <div ref={topRef}  className='w-full h-[100dvh] p-3 space-y-6 ' >
       <div className="w-full relative max-h-[350px] ">
       <div className="flex absolute top-5 items-center justify-between w-full">
-        <Link to={-1} ><AiOutlineLeft size={25} /></Link>
         <span className="w-10 h-10 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,0,0,0.2)]">
-          <BiHeart size={25} className="fill-red-500" />
+        <Link to={-1} ><AiOutlineLeft size={25} /></Link>
+        </span>
+        <span onClick={handleHeart} className="w-10 h-10 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,0,0,0.2)]">
+          {
+            isHeart ? < FaHeart size={25}  className='text-red-500' /> : <  BiHeart size={25} className="fill-red-500" /> 
+          }
         </span>
       </div>
         <img
           src={card?.img}
           alt=""
-          className="object-cover object-center  w-full max-h-[350px]"  
+          className="object-cover rounded-t-2xl object-center  w-full max-h-[350px]"  
         />
       </div>
       <div className='flex items-start justify-between ' >
@@ -346,7 +385,7 @@ import { useCard } from '../SaveCardContext'
         </div>
       </div>
       <div className='w-full h-20 text-white flex items-center justify-center rounded-[20px_20px_0_0] bg-black fixed bottom-0 left-1/2 -translate-x-1/2' >
-          <h1 onClick={addToCard} className='font-bold text-lg flex gap-3 border-b-2 border-white pb-5  ' > <IoBag size={25} /> Add To Cart</h1>
+          <h1 onClick={addToCard} className='font-bold text-lg flex gap-3 border-b-2 select-none border-white pb-5  ' > <IoBag size={25} /> Add To Cart</h1>
       </div>
     </div>
   )

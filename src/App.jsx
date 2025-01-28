@@ -24,10 +24,13 @@ import Address from './screen/setting/Address'
 import Vocher from './screen/setting/Vocher'
 import RattingSettingProfile from './screen/setting/RattingSettingProfile'
 import AdminService from './screen/setting/AdminService'
+import ModalFeedBack from './components/ModalFeedBack'
+import ContextMyWhislist from './ContextMyWhislist'
 
 const App = () => {
   
   return (
+    <ContextMyWhislist>
       <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/getStarted' element={<GetStartedPage/>} />
@@ -56,6 +59,7 @@ const App = () => {
         <Route path='profile' element={<Setting/>} />
       </Route>
     </Routes>
+    </ContextMyWhislist>
   )
 }
 

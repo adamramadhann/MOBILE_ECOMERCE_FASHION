@@ -16,7 +16,6 @@ const Layout = () => {
     const handleOpenModal = (inputSearch) =>{
        if(inputSearch) {
         setIsOpenModal(!isOpenModal)
-        console.log("value input serach1",inputSearch)
        }
     }
 

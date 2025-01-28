@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import HeadersCheckout from '../../components/HeadersCheckout'
 import { MdDelete } from 'react-icons/md'
 
@@ -8,12 +8,21 @@ const MyCard = () => {
     const [filterCard, setFilterCard] = useState([])
     const [selectCard, setSelectCard] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
+    const navigate = useNavigate()
 
     const handleFilterData = () => {
     const dataCheckout = JSON.parse(localStorage.getItem('card')) || []
     setFilterCard(dataCheckout)
     }
 
+    const handleNextStep = (e) => {
+        e.preventDefault()
+        if (!selectCard.length) {
+            alert('card not a select')
+        } else {
+            navigate('/checkout')
+        }
+    }
 
     const handleSelectCard = (id) => {
         setSelectCard((prev) => {
@@ -39,10 +48,14 @@ const MyCard = () => {
         handleFilterData()
 
         const totalprice = filterCard.filter((val) => selectCard.includes(val.id))
-        .reduce((val, item) => val + parseFloat(item.price.replace('$', ' ')), 0)
+        .reduce((val, item) => val + parseFloat(item.price.replace('$', ' ').trim()), 0)
         setTotalPrice(totalprice)
         localStorage.setItem('total_price',JSON.stringify(totalPrice))
-    }, [selectCard, filterCard])
+    }, [selectCard])
+
+    useEffect(() => {
+        localStorage.setItem('total_price',JSON.stringify(totalPrice))
+    },[totalPrice])
 
     console.log(totalPrice);
     
@@ -104,9 +117,7 @@ const MyCard = () => {
             </div>
         </div>
        </div>
-        <Link to={'/checkout'} >
-            <button className='w-[95%]  bottom-5   my-5 rounded-full py-3 bg-[#343434] text-white' >Proceed to checkout</button>
-        </Link>
+            <button onClick={handleNextStep} className='w-[95%]  bottom-5   my-5 rounded-full py-3 bg-[#343434] text-white' >Proceed to checkout</button>
         <div className='' ></div>
     </div>
   )

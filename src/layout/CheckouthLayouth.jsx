@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HeadersCheckout from '../components/HeadersCheckout'
 import { FaCreditCard, FaMapMarkerAlt } from 'react-icons/fa'
 import { BsCheckCircleFill } from 'react-icons/bs'
@@ -6,18 +6,30 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 const CheckouthLayouth = () => {
 
-    const location = useLocation()
-
-    const navigateStep3 = location.pathname === '/checkout/step3';
+    const [ isForm, setIsForm ] = useState(false)
+    const navigate = useNavigate()
 
     const nextSTep = [
         {
+            teks : 'Step 2',
+            sub_teks : 'Shepping',
             path : '/checkout/step2'
         },
         {
+            teks : 'Step 3',
+            sub_teks : 'Shepping',
             path : '/checkout/step3'
         },
     ]
+
+    const handleNextStep = () => {
+        if (isForm) {
+            navigate(nextSTep[0].path)
+        } else {
+            alert('not route, please complete ll required fileds!')
+        }
+    }
+
   return (
     <div className='w-full p-5 -z-10 h-[100dvh]' >
         <div className='w-full z-50 ' >
@@ -41,12 +53,8 @@ const CheckouthLayouth = () => {
             </span>
         </div>
         <div className='h-full' >
-            <Outlet/>
-            <Link to={'/checkout/step2'} >
-             <button className={`bg-[#343434]  w-full py-3 rounded-full text-white ${navigateStep3 && 'hidden'}`} >Continue to payment</button>
-            </Link>
+            <Outlet context={{ isForm, setIsForm }} />
         </div>
-        <div className='h-5' ></div>
     </div>
   )
 }

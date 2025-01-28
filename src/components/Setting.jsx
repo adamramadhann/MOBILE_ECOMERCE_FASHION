@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineRight, AiOutlineSetting } from 'react-icons/ai'
 import { FaSignOutAlt } from 'react-icons/fa'
 import { FaHeart, FaLocationDot, FaStar } from 'react-icons/fa6'
@@ -8,6 +8,8 @@ import HeadersCheckout from './HeadersCheckout'
 import { IoChatbubbleEllipses } from 'react-icons/io5'
 
 const Setting = () => {
+
+    const [dataUser, setDataUser] = useState({})
 
     const menuSetting = [
         {
@@ -42,16 +44,25 @@ const Setting = () => {
         },
     ]
 
+  useEffect(() => {
+    const getData = localStorage.getItem('user_profile')
+    if(getData) {
+        setDataUser(JSON.parse(getData))
+    }
+  }, [])
+
+  console.log(dataUser);
+  
   return (
     <div className='w-full h-[100dvh] relative space-y-10 pt-10 p-6 ' >
-        <div className='flex px-2 items-center justify-between' >
-            <img src="/setting/image.png" className='w-12 h-12' alt="" />
+        <div className='flex px-7 items-center justify-between' >
+            <img src={ dataUser.image || "/setting/image.png"} className='w-12 rounded-full h-12' alt="" />
             <div>
-                <h1>Adam Ramadhan</h1>
-                <p className='text-xs' >ramadhanadam1104@gmail.com</p>
+                <h1 className='font-bold text-lg' >{dataUser.first_name} {dataUser.last_name} </h1>
+                <p className='text-xs' >{dataUser.email}</p>
             </div>
-            <Link to={'/profile'} >
-                <AiOutlineSetting size={25}  />
+            <Link className='ml-2' to={'/profile'} >
+                <AiOutlineSetting size={28}  />
             </Link>
         </div>
         <div className='grid gap-10 ' >

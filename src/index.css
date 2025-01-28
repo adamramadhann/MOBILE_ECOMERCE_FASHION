@@ -4,28 +4,28 @@
 
 
 .hide-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none;   /* Firefox */
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
   }
   
   .hide-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and Opera */
+    display: none; 
   }
 
   .smooth-scroll-container {
-    scroll-behavior: smooth; /* Mengaktifkan scroll halus */
+    scroll-behavior: smooth; 
   }
 
   .step-text {
     display: flex;
     align-items: center;
-    gap: 10px; /* Jarak antara teks dan garis */
+    gap: 10px; 
   }
 
   .step-line {
     flex-grow: 1;
     height: 2px;
-    background-color: #4caf50; /* Warna garis */
+    background-color: #4caf50; 
   }
 
   .border-dettod {
@@ -53,6 +53,7 @@
   border-right: 30px solid transparent;
   border-bottom: 30px solid rgb(151, 151, 255);
 }
+
 
 
 

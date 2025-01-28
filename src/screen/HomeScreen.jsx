@@ -104,8 +104,8 @@ const HomeScreen = () => {
         {/* image */}
         <div>
             <div className='relative w-full flex justify-center  ' >
-                <img className='object-cover' src="src/assets/Mask Group.png" alt="" />
-                <p className='absolute top-3 right-16 text-xl text-white font-bold' >Auntumn <br /> Colection <br /> 2021</p>
+                <img className='object-cover w-full' src="/Mask Group copy.png" alt="" />
+                <p className='absolute top-3 right-14 text-xl text-white font-bold' >Auntumn <br /> Colection <br /> 2021</p>
             </div>
         </div>
         {/* featur produck  */}
@@ -151,7 +151,7 @@ const HomeScreen = () => {
         >
             {
               imageRecomanded.map((val, index) => (
-                <div className='flex-none items-center' >
+                <div onClick={() => handleDetailCard(val, val.id)} className='flex-none items-center' >
                     <div className='flex items-center gap-5' >
                     <img  className='w-20 h-20 ' src={val.img} alt="" />
                     <div>
@@ -173,9 +173,9 @@ const HomeScreen = () => {
                     <h1 className='text-gray-500 text-xs ' >Sale up to 40%</h1>
                     <h1 className='text-[20px] text-gray-600 ' >FOR SLIM & BEAUTY</h1>
                 </div>
-              <div className='w-[45%] h-[150px] relative rounded-full p-4  ' >
-                  <div className='w-[90%] h-full  bg-[#E2E2E2] rounded-full' >
-                      <img className='absolute top-0' src="src/assets/image 48.png" alt="" />
+              <div className='w-[115px] h-[115px]  relative rounded-full p-  ' >
+                  <div className='w-full h-full  bg-[#E2E2E2] rounded-full' >
+                      <img className='absolute h-[120px] left-1/2 -translate-x-1/2 rounded-b-full -top-1' src="/homeScreen/image 48.png" alt="" />
                   </div>
               </div>
           </div>
@@ -185,7 +185,7 @@ const HomeScreen = () => {
                     <h1 className='text-[20px] text-gray-600 ' >FOR SLIM & BEAUTY</h1>
                 </div>
               <div className='w-[45%] h-[150px] relative rounded-full p-4  ' >
-                  <img className='absolute top-0' src="src/assets/image 69.png" alt="" />
+                  <img className='absolute top-0 h-[190px] ' src="src/assets/image 69.png" alt="" />
               </div>
           </div>
         </div>

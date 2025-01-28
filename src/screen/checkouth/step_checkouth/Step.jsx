@@ -1,69 +1,146 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate, useOutlet, useOutletContext } from 'react-router-dom';
 
 const Step = () => {
 
-    const handleSubmit = () => {
+    const [formData, setFormData] = useState({
+        first_name: '',
+        last_name: '',
+        street: '',
+        city: '',
+        province: '',
+        zep: '',
+        phone: '',
+        shipping_method: '',
+        code_discount: '',
+        copy_address: false,
+    });
+    const navigate = useNavigate()
 
+    const { isForm, setIsForm } = useOutletContext()
+
+    const handleChange = (e) => {
+        const { name , value, type, checked } = e.target;
+        setFormData((val) => ({
+            ...val,
+            [name] : type === 'checkbox' ? checked : value
+        }));
     }
+
+    console.log(isForm);
+    
+
+    const handleSubmitYo = (e) => {
+        e.preventDefault()
+        localStorage.setItem('step', JSON.stringify(formData))
+        setIsForm(true)
+        navigate('/checkout/step2')
+    }    
+    
+    
 
   return (
     <div>
-        <form className='space-y-10' >
+        <form onSubmit={handleSubmitYo} className='space-y-10' >
          <div className='space-y-6' >
-         <label className='flex flex-col text-sm text-gray-700 ' htmlFor="first_name">
-                First Name
-                <input required className='border-b outline-none rounded-md text-sm ' type="text" name="first_name" id="first_name" />
+            <label htmlFor='first_name' className="relative w-full text-sm">
+                <input
+                    placeholder="First Name "
+                    className="w-full border-b outline-none text-sm  p-2 peer "
+                    type="text"
+                    id='first_name'
+                    name='first_name'
+                    value={formData.first_name}
+                    onChange={handleChange}
+                />
+                <span className="absolute h-[2px] -bottom-2 left-1/2 w-0 
+                    transition-all duration-500 peer-focus:w-full peer-focus:left-0 peer-focus:bg-[#2563EB]" />
             </label>
-            <label className='flex flex-col text-sm text-gray-700 ' htmlFor="Last_name">
-                Last Name
-                <input required className='border-b outline-none rounded-md text-sm ' type="text" id="Last_name" name="Last_name" />
+            <label className=' block relative  text-sm text-gray-700 ' htmlFor="last_name">
+                <input 
+                required 
+                className='border-b peer p-1 outline-none rounded-md text-sm ' 
+                type="text" id="last_name" placeholder='Last Name' name="last_name" 
+                value={formData.last_name}
+                onChange={handleChange}
+                />
+                <span className='w-0 block h-[2px] transition-all duration-300 peer-focus:w-full absolute bottom-0  peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-[#2563EB]  ' />
             </label>
-            <select className='w-full pb-2 text-sm outline-none bg-white border-b' name="adm" id="">
-                <option  value="contoh">contoh select</option>
-                <option  value="contoh">contoh 1</option>
-                <option  value="contoh">contoh 2</option>
-            </select>
-            <label className='flex flex-col text-sm text-gray-700 ' htmlFor="Street">
-                Street name 
-                <input required className='border-b outline-none rounded-md text-sm ' type="text" name='Street' id='Street' />
-                <span className='w-full h-[2px] ' ></span>
+            <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="street">
+                <input placeholder='Street Name' 
+                required 
+                className='border-b peer p-1 outline-none rounded-md text-sm ' 
+                type="text" name='street' id='street' 
+                value={formData.street}
+                onChange={handleChange}
+            />
+                <span className='w-0 transition-all duration-300 h-[2px] absolute bottom-0 peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-[#2563EB] ' ></span>
             </label>
-            <label className='flex flex-col text-sm text-gray-700 ' htmlFor="City">
-                City
-                <input required className='border-b outline-none rounded-md text-sm' name='City' type="text" id='City' />
+            <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="city">
+                <input placeholder='City' 
+                required 
+                className='border-b peer p-1  outline-none rounded-md text-sm ' 
+                type="text" name='city' id='city' 
+                value={formData.city}
+                onChange={handleChange}
+            />
+                <span className='w-0 transition-all duration-300 h-[2px] absolute bottom-0 peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-[#2563EB] ' ></span>
             </label>
-            <label className='flex flex-col text-sm text-gray-700 ' htmlFor="State_Province">
-                State / Province
-                <input required className='border-b outline-none rounded-md text-sm ' type="text" name='State_Province' id='State_Province' />
+            <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="province">
+                <input placeholder='State / Province' 
+                required 
+                className='border-b peer p-1  outline-none rounded-md text-sm ' 
+                type="text" name='province' id='province'
+                value={formData.province}
+                onChange={handleChange}
+                 />
+                <span className='w-0 transition-all duration-300 h-[2px] absolute bottom-0 peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-[#2563EB] ' ></span>
             </label>
-            <label className='flex flex-col text-sm text-gray-700 ' htmlFor="Zip-code">
-                Zip-code 
-                <input required className='border-b outline-none rounded-md text-sm ' name='Zip-code' type="text" id='Zip-code' />
+            <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="zep">
+                <input placeholder='Zep-code' 
+                required 
+                className='border-b p-1 peer  outline-none rounded-md text-sm ' 
+                type="text" name='zep' 
+                id='zep' 
+                value={formData.zep}
+                onChange={handleChange}
+            />
+                <span className='w-0 transition-all duration-300 h-[2px] absolute bottom-0 peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-[#2563EB] ' ></span>
             </label>
-            <label className='flex flex-col text-sm text-gray-700 ' htmlFor="Phone_number">
-                Phone number  
-                <input required className='border-b outline-none rounded-md text-sm ' name='Phone_number' type="text" id='Phone_number' />
+            <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="phone">  
+                <input 
+                    placeholder='Phone number' 
+                    required 
+                    className='border-b p-1 peer outline-none rounded-md text-sm ' 
+                    name='phone' 
+                    type="text" 
+                    id='phone'
+                    value={formData.phone}
+                    onChange={handleChange}
+                />
+                <span className='block bottom-0 transition-all duration-300 w-0 h-[2px] peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-[#2563EB] absolute ' />
             </label>
             <div className='mt-10' >
                 <h1 className='text-[15px] text-gray-700 font-bold' >Shipping method</h1>
                <div>
-               <div className='flex w-full gap-5 shadow-md mt-5 rounded-lg py-3 justify-center' >
-                    <input required className='h-6 w-6' name='free' type="radio" />
+               <div className='flex w-full gap-7 shadow-md mt-5 rounded-lg py-3 justify-center' >
+                    <input required className='h-6 w-6' alue={formData.shipping_method} onChange={handleChange} name='shipping_method' type="radio" />
                     <div>
                         <p className='font-bold text-sm' >Free <span className='font-light' >Delivery to home</span></p>
                         <p className='text-sm text-gray-400' >Delivery from 3 to 7 business days</p>
                     </div>
                 </div>
-               <div className='flex w-full gap-5 shadow-md mt-5 rounded-lg py-3 justify-center' >
-                    <input required className='h-6 w-6' name='discount_1' type="radio" />
+               <div className='flex w-full gap-7 shadow-md mt-5 rounded-lg py-3 justify-center' >
+                    <input 
+                    required value={formData.shipping_method} onChange={handleChange} className='h-6 w-6' name='shipping_method' type="radio" />
                     <div>
                         <p className='font-bold text-sm' >$99.00 <span className='font-light' >Delivery to home</span></p>
                         <p className='text-sm text-gray-400' >Delivery from 3 to 7 business days</p>
                     </div>
                 </div>
-               <div className='flex w-full gap-5 shadow-md mt-5 rounded-lg py-3 justify-center' >
-                    <input required className='h-6 w-6' name='discount_2' type="radio" />
+               <div className='flex w-full gap-7 shadow-md mt-5 rounded-lg py-3 justify-center' >
+                    <input 
+                    required className='h-6 w-6' alue={formData.shipping_method} onChange={handleChange} name='shipping_method' type="radio" />
                     <div>
                         <p className='font-bold text-sm' >$50.00 <span className='font-light' >Delivery to home</span></p>
                         <p className='text-sm text-gray-400' >Delivery from 3 to 7 business days</p>
@@ -72,19 +149,21 @@ const Step = () => {
                </div>
             </div>
             <label className='py-10 flex justify-between text-green-600 items-center  gap-2 ' htmlFor="Coupon_Code">
-                <input required type="text" name='code_discount' className='outline-none w-full text-gray-400 ' placeholder='Have a code? type it here...' />
+                <input 
+                required type="text" name='code_discount' className='outline-none w-full text-gray-400 ' placeholder='Have a code? type it here...' />
                  Validate
             </label>
          </div>
             <div className='flex flex-col gap-3' >
                 <h1 className='text-[15px] text-gray-700 font-bold' >Billing Address</h1>
-                <span className='flex gap-5 items-center text-gray-500' >
-                    <input required className='' name='addres_checked' type="checkbox" />
+                <span className='flex gap-7 items-center text-gray-500' >
+                    <input 
+                    required className='' name='addres_checked' type="checkbox" />
                     <p>Copy address data from shipping</p>
                 </span>
             </div>
+            <button type='submit'  className={`bg-[#343434] my-5 w-full py-3 rounded-full text-white `} >Continue to payment</button>
         </form>
-        <div className='h-10'></div>
     </div>
   )
 }
