@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import HeadersCheckout from '../../components/HeadersCheckout'
 import { PiBuildingOfficeBold } from 'react-icons/pi'
 import { LuHotel } from 'react-icons/lu'
@@ -8,8 +8,10 @@ import ModalAddress from '../../components/ModalAddress'
 const Address = () => {
 
     const [modalActive, setModalActive] = useState(false)
+    const [checkedAddress, setCheckedAddress] = useState('')
 
-    const handleModalActive = () => {
+    const handleModalActive = (e) => {
+        e.preventDefault()
         setModalActive(val => !val)
     }
 
@@ -23,6 +25,20 @@ const Address = () => {
             location : 'home'
         },
     ]
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+        setCheckedAddress(value)
+    }
+
+    useEffect(() => {
+        localStorage.setItem('addres', JSON.stringify(checkedAddress))
+    }, [checkedAddress])
+
+    console.log(checkedAddress);
+    
+
+
   return (
     <div className='p-5 relative ' >
         <ModalAddress isActice={modalActive} setModalActive={setModalActive} />
@@ -30,8 +46,8 @@ const Address = () => {
         <div className='mt-20 space-y-16 ' >
             {
                 addresData.map((val) => (
-                    <div className='flex items-center gap-3 w-full' >
-                        <input type="radio" className='h-5 w-5' />
+                    <form className='flex items-center gap-3 w-full' >
+                        <input checked={ checkedAddress === val.location} value={val.location} name='checkedAddress' onChange={handleChange} type="radio" className='h-5 w-5' />
                         <div className='flx w-full items-start justify-between ' >
                             <div className='flex w-full items-start justify-between ' >
                             <div className='flex items-center gap-5' >
@@ -45,7 +61,7 @@ const Address = () => {
                             </div>
                             <p className=' text-sm mt-1 text-gray-400' >SBI Building, street 3, Software Park</p>
                         </div>
-                    </div>
+                    </form>
                 ))
             }
         </div>

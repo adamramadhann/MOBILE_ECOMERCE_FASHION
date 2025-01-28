@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdOutlineStarPurple500 } from 'react-icons/md'
 import { dataBoard, image_all_items } from '../data/data'
 import { AiOutlineRight } from 'react-icons/ai'
 import HeadersCheckout from '../components/HeadersCheckout'
 import { useCard } from '../SaveCardContext'
 import { useNavigate } from 'react-router-dom'
+import { useCardMW } from '../ContextMyWhislist'
 
 const MyWhistList = () => {
   const {card, setCard} = useCard()
+  const [data, setData] = useState([])
   const naviget = useNavigate()
+
+  
 
   const handleDetail = (select, id) => {
     setCard(select)
@@ -26,7 +30,17 @@ const MyWhistList = () => {
     },
   ]
 
+  const handleGetData = () => {
+    const getData = JSON.parse(localStorage.getItem('heart'))
+    setData(getData)
+  }
 
+  useEffect(() => {
+   handleGetData()
+  }, [])
+
+  console.log(data);
+  
 
 
   const star = Array(5).fill(null).map(() => ({
@@ -49,9 +63,9 @@ console.log(btnActive);
            <div className='w-full mt-28' >
            {
               btnActive === 'All items' && (
-                <div className='grid mt-5 hide-scrollbar grid-cols-2 gap-10 overflow-auto w-full h-[100dvh] ' >
+                <div className={`grid mt-5 hide-scrollbar grid-cols-2 gap-10 w-full ${Array.isArray(data) && data.length > 0 && 'overflow-auto h-[100dvh]'} `} >
                 {
-                  image_all_items.map((val) => (
+                  Array.isArray(data) && data.length > 0 ? data.map((val) => (
                     <div onClick={() => handleDetail(val, val.id)} className='w-[140px] h-[250px] ' >
                       <img src={val.img} alt="" className=' w-full h-[186px] object-cover ' />
                       <h1 className='text-sm text-gray-500 mt-2 ' >{val.nameProduck}</h1>
@@ -68,7 +82,9 @@ console.log(btnActive);
                               <p className='text-[10px] pl-1 ' >(64)</p>
                               </div>
                       </div>
-                  ))
+                  )) : (
+                    <h1 className='w-full text-center absolute  left-1/2 -translate-x-1/2 mt-10 font-bold overflow-hidden' >Your not like the produck</h1>
+                  )
                 }
                 </div>
               )

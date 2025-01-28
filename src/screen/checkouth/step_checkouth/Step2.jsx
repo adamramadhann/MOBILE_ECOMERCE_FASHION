@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { AiOutlineCopy } from 'react-icons/ai';
 import { BsCashCoin, BsCreditCard2FrontFill, BsCreditCardFill } from 'react-icons/bs';
 import { FaCcMastercard, FaCcPaypal } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const payment = [
     {
@@ -55,9 +56,18 @@ const payment = [
 
 const Step2 = () => {
     const [centerCard, setCenterCard] = useState(null);
+    const [agree, setAgree] = useState('');
     const containerRef = useRef(null);
+    const navigate = useNavigate()
     
+    const price = JSON.parse(localStorage.getItem('total_price'))
+    const cardItem = JSON.parse(localStorage.getItem('card'))
 
+    const handleSUbmit = (e) => {
+        e.preventDefault()
+        localStorage.setItem('step_2',JSON.stringify(agree))
+        navigate('/checkout/step3')
+    }
     
     
 
@@ -87,7 +97,6 @@ const Step2 = () => {
             }
         });
 
-        // Normalize the index to the original payment array length
         const normalizedIndex = closestIndex % payment.length;
         setCenterCard(normalizedIndex);
     };
@@ -99,7 +108,6 @@ const Step2 = () => {
     useEffect(() => {
         const container = containerRef.current;
         if (container) {
-            // Set initial scroll position to the middle set of items
             container.scrollLeft = container.scrollWidth / 3;
             container.addEventListener('scroll', handleScroll);
         }
@@ -169,22 +177,29 @@ const Step2 = () => {
                     <img src="/payments copy.png" className='mx-auto' alt="" />
                 </div>
             <div className='w-full space-y-10 mt-20 ' >
-                   <span className='flex items-center justify-between border-b pb-3 ' >
-                        <h1 className='text-sm text-gray-500 font-bold' >Product price</h1>
-                        <p className='text-sm text-gray-500 font-bold' >$110</p>
-                   </span>
-                   <span className='flex items-center justify-between border-b pb-3 ' >
+                   {
+                    cardItem.map((val) => (
+                        <span className='flex items-center justify-between border-b pb-3 ' >
+                            <h1 className='text-sm text-gray-500 font-bold' >{val.nameProduck}</h1>
+                            <p className='text-sm text-gray-500 font-bold' >{val.price}</p>
+                        </span>
+                    ))
+                   }
+                   {/* <span className='flex items-center justify-between border-b pb-3 ' >
                         <h1 className='text-sm text-gray-500 font-bold' >Shipping</h1>
                         <p className='text-sm text-gray-500 font-bold' >Shipping Freeship</p>
-                   </span>
+                   </span> */}
                    <span className='flex items-center justify-between border-b pb-3 ' >
-                        <h1 className='text-sm text-gray-500 font-bold' >Subtotal</h1>
-                        <p className='text-sm text-gray-500 font-bold' >$110</p>
+                        <h1 className='text-lg text-gray-500 font-bold' >Subtotal</h1>
+                        <p className='text-lg text-gray-500 font-bold' >{price}</p>
                    </span>
-                   <span className='flex w-full gap-5 items-center' >
-                        <input type="checkbox" />
-                        <p>I agree to Terms and conditions</p>
-                   </span>
+                <form onSubmit={handleSUbmit} >
+                <span className='flex w-full gap-5 items-center' >
+                    <input required type="checkbox" />
+                    <p>I agree to Terms and conditions</p>
+                </span>
+                <button type='submit' className={`bg-[#343434] my-5 w-full py-3 rounded-full text-white `} >Continue to payment</button>
+                </form>
             </div>
         </div>
     );
