@@ -126,13 +126,13 @@ const HomeScreen = () => {
             <div 
             ref={refFeature}
             onScroll={handleScrollFeature}
-            className='flex overflow-x-auto hide-scrollbar snap-mandatory scroll-smooth hide scrollbar-hide gap-6'
+            className='flex overflow-x-auto hide-scrollbar snap-mandatory scroll-smooth hide scrollbar-hide gap-7'
             >
               {
                 image_all_items.map((val, index) => (
                   <div onClick={() => handleDetailCard(val, val.id)} className='flex-none  ' >
-                    <div className='mt-2' >
-                        <img className='w-[126px] rounded-md h-[172px]' src={val.img} alt="" />
+                    <div className='mt-2 w-[156px]' >
+                        <img className='w-[156px] object-cover object-top rounded-md h-[172px]' src={val.img} alt="" />
                         <h1 className='text-sm mt-3 text-gray-500 ' >{val.nameProduck}</h1>
                         <p className='font-bold' >{val.price}</p>
                     </div>
