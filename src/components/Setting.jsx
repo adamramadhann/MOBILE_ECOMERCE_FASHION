@@ -5,6 +5,7 @@ import { FaHeart, FaLocationDot, FaStar } from 'react-icons/fa6'
 import { MdDiscount } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import HeadersCheckout from './HeadersCheckout'
+import image1 from '/setting/image.png';
 import { IoChatbubbleEllipses } from 'react-icons/io5'
 
 const Setting = () => {
@@ -56,7 +57,7 @@ const Setting = () => {
   return (
     <div className='w-full h-[100dvh] relative space-y-10 pt-10 p-6 ' >
         <div className='flex px-7 items-center justify-between' >
-            <img src={ dataUser.image || "/setting/image.png"} className='w-12 rounded-full h-12' alt="" />
+            <img src={ dataUser.image || image1} className='w-12 rounded-full h-12' alt="" />
             <div>
                 <h1 className='font-bold text-lg' >{dataUser.first_name || 'adam'} {dataUser.last_name || 'ramadhan'}  </h1>
                 <p className='text-xs' >{dataUser.email || 'ramadhanadam1104@gmail.com'}</p>
