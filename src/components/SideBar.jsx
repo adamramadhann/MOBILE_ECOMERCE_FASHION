@@ -4,6 +4,7 @@ import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../DarkMode'
 import { CiCreditCard1, CiViewList } from 'react-icons/ci'
+import image1 from '/setting/image.png';
 
 const SideBar = ({ style, onClick }) => {
 
@@ -54,7 +55,7 @@ const SideBar = ({ style, onClick }) => {
     <div onClick={onClick} className={`absolute top-0 bg-black/10 w-full h-full ${style}`} >
         <div onClick={(e) => e.stopPropagation()} className={` w-[80%] relative z-20  px-3 pt-5 rounded-br-[50px] rounded-tr-[50px] ${darkMode ? 'bg-black text-white border-r border-white ' : 'bg-white shadow-[0_0_2px_rgba(0,0,0,0.2)] '} h-full`} >
             <div className='flex gap-3 items-center w-full justify-center p-5 ' >
-                <img src="src/assets/image.png" alt="user" className='w-10 h-10' />
+                <img src={image1} alt="user" className='w-10 h-10' />
                 <span className='flex flex-col ' >
                     <h1 className='text-sm' >Adam Ramadhan</h1>
                     <p className='text-xs' >ramadhanadam1104@gmail.com</p>
