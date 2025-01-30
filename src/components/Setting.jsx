@@ -56,7 +56,7 @@ const Setting = () => {
   
   return (
     <div className='w-full h-[100dvh] relative space-y-10 pt-10 p-6 ' >
-        <div className='flex px-7 items-center justify-between' >
+        <div className='flex items-center justify-between' >
             <img src={ dataUser.image || image1} className='w-12 rounded-full h-12' alt="" />
             <div>
                 <h1 className='font-bold text-lg' >{dataUser.first_name || 'adam'} {dataUser.last_name || 'ramadhan'}  </h1>
