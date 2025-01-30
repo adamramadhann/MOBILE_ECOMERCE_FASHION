@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaGlasses } from "react-icons/fa";
 import { IoMdMale } from "react-icons/io";
 import { RiWomenLine } from "react-icons/ri";
@@ -6,6 +6,8 @@ import { TiBrush } from "react-icons/ti";
 import { useCard } from '../SaveCardContext';
 import { useNavigate } from 'react-router-dom';
 import { image_all_items, imageFeature } from '../data/data';
+import image1 from '../assets/Mask Group (5).png';
+import image2 from '../assets/Mask Group (6).png';
 
 export const menuTopBarHomeScreen = [
     {
@@ -59,33 +61,34 @@ const HomeScreen = () => {
 
 
 
+
   const imageRecomanded = [
     {
-      id:40,
-      img : 'src/assets/Mask Group (5).png',
-      nameProduck : 'White fashion hoodie',
-      price : '$ 39.99'
+      id: 40,
+      img: image1,
+      nameProduck: 'White fashion hoodie',
+      price: '$ 39.99'
     },
     {
-      id:41,
-      img : 'src/assets/Mask Group (6).png',
-      nameProduck : 'Black fashion ',
-      price : '$ 45.00'
+      id: 41,
+      img: image2,
+      nameProduck: 'Black fashion',
+      price: '$ 45.00'
     },
     {
-      id:42,
-      img : 'src/assets/Mask Group (5).png',
-      nameProduck : 'White fashion hoodie',
-      price : '$ 50.00'
+      id: 42,
+      img: image1,
+      nameProduck: 'White fashion hoodie',
+      price: '$ 50.00'
     },
     {
-      id:44,
-      img : 'src/assets/Mask Group (6).png',
-      nameProduck : 'Long Sleeve Dress',
-      price : '$ 45.00'
+      id: 44,
+      img: image2,
+      nameProduck: 'Long Sleeve Dress',
+      price: '$ 45.00'
     },
-  ]
-
+  ];
+  
 
   return (
     <div className='w-full h-full overflow-auto px-4 pb-10 space-y-10 ' >

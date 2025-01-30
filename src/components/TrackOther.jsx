@@ -1,6 +1,7 @@
 import React from 'react'
 import HeadersCheckout from './HeadersCheckout'
 import { MdOutlineStarPurple500 } from 'react-icons/md'
+import image from '/image copy 13.png'
 
 const TrackOther = () => {
 
@@ -56,7 +57,7 @@ const TrackOther = () => {
                 </div>
             </div>
             <div className='flex items-center gap-4 pt-5 justify-center w-full' >
-                <img src="public/image copy 13.png" className='w-[80px]' alt="" />
+                <img src={image} className='w-[80px]' alt="" />
                 <div className='    ' >
                    <p className='text-sm mb-1' > Don’t forget to rate</p>
                    <p className='text-xs mb-2 ' >Rate product to get 5 points for collect.</p>

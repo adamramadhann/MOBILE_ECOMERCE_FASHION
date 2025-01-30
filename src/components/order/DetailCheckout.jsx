@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { AiOutlineLeft } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import order from '/image copy 12.png'
 
 const DetailCheckout = () => {
     const [activeBtn, setActiveBtn] = useState('Rate')
@@ -31,7 +32,7 @@ const DetailCheckout = () => {
                 <h1 className='text-sm '>Track Your Order</h1>
                 <p className='text-[10px]' >Check the status of your order below.</p>
             </div>
-            <img src="/image copy 12.png" alt="" className='w-20'  />
+            <img src={order} alt="" className='w-20'  />
         </div>
         </Link>
         </div>

@@ -56,27 +56,32 @@ const changeBae64 =  (e) => {
             </div>
             <div className=' w-full grid gap-5 ' >
                 <div className='flex justify-between gap-5 items-center w-full' >
-                    <span className=' block space-y-2 w-[50%] ' >
+                    <span className=' relative block space-y-2 w-[50%] ' >
                         <h1 className='text-sm text-gray-700 ' >First Name</h1>
-                        <input onChange={handleChange} value={isForm.first_name} required name='first_name' type='text' className=' text-xs outline-none text-gray-500 w-full border-b pb-1 ' placeholder='Adam' />
+                        <input onChange={handleChange} value={isForm.first_name} required name='first_name' type='text' className=' text-xs peer outline-none text-gray-500 w-full border-b pb-1 ' placeholder='Adam' />
+                        <span className='w-0 absolute bottom-0 h-[2px] peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-blue-600 transition-all duration-500 ' />
                     </span>
-                    <span className='space-y-2 flex-1 ' >
+                    <span className='space-y-2 relative flex-1 ' >
                         <h1 className='text-sm text-gray-700 ' >Last Name</h1>
-                        <input onChange={handleChange} value={isForm.last_name} required name='last_name' type='text' className=' text-xs outline-none text-gray-500 pb-1 border-b' placeholder='Ramadhan' />
+                        <input onChange={handleChange} value={isForm.last_name} required name='last_name' type='text' className=' text-xs outline-none peer text-gray-500 pb-1 border-b' placeholder='Ramadhan' />
+                        <span className='w-0 absolute bottom-0 h-[2px] peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-blue-600 transition-all duration-500 ' />
                     </span>
                 </div>
-                <span className='space-y-2 w-full ' >
+                <span className='space-y-2 relative w-full ' >
                     <h1 className='text-sm text-gray-700 ' >Email</h1>
-                    <input onChange={handleChange} value={isForm.email} required name='email' type='text' className=' text-xs outline-none text-gray-500 pb-1 border-b' placeholder='ramadhanAdam1104@gmail.com'/>
+                    <input onChange={handleChange} value={isForm.email} required name='email' type='text' className=' text-xs outline-none peer w-full text-gray-500 pb-1 border-b' placeholder='ramadhanAdam1104@gmail.com'/>
+                    <span className='w-0 absolute bottom-0 h-[2px] peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-blue-600 transition-all duration-500 ' />
                 </span>
-                <div className='flex justify-between gap-5 items-center w-full' >
-                    <span className=' block space-y-2 w-[50%] ' >
+                <div className='flex  justify-between gap-5 items-center w-full' >
+                    <span className=' relative block space-y-2 w-[50%] ' >
                         <h1 className='text-sm text-gray-700 ' >Gender</h1>
-                        <input onChange={handleChange} value={isForm.gender} required name='gender' type='text' className=' text-xs outline-none text-gray-500 w-full border-b pb-1' placeholder='Man' />
+                        <input onChange={handleChange} value={isForm.gender} required name='gender' type='text' className=' text-xs outline-none peer text-gray-500 w-full border-b pb-1' placeholder='Man' />
+                        <span className='w-0 absolute bottom-0 h-[2px] peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-blue-600 transition-all duration-500 ' />
                     </span>
-                    <span className='space-y-2 flex-1 ' >
+                    <span className='space-y-2 relative flex-1 ' >
                         <h1 className='text-sm text-gray-700 ' >Phone</h1>
-                        <input onChange={handleChange} value={isForm.phone} required name='phone' type='text' className=' text-xs outline-none text-gray-500 pb-1 border-b' placeholder='( +62 ) 857-7479-9048 ' />
+                        <input onChange={handleChange} value={isForm.phone} required name='phone' type='text' className=' text-xs outline-none peer text-gray-500 pb-1 border-b' placeholder='( +62 ) 857-7479-9048 ' />
+                        <span className='w-0 absolute bottom-0 h-[2px] peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-blue-600 transition-all duration-500 ' />
                     </span>
                 </div>
             </div>

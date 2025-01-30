@@ -38,7 +38,9 @@ const About = () => {
             </div>
           </div>
         </div>
-        <button className='absolute px-11 py-3 rounded-tl-2xl rounded-bl-2xl bg-black text-white right-0 bottom-3 ' >View All</button>
+        <Link to={'/layout/search'} >
+          <button className='absolute px-11 py-3 rounded-tl-2xl rounded-bl-2xl bg-black text-white right-0 bottom-3 ' >View All</button>
+        </Link>
     </div>
   )
 }
