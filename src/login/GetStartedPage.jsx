@@ -1,6 +1,10 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../DarkMode'
+import image1 from '../assets/pngegg (1)_auto_x2 1.png';
+import image2 from '../assets/fashion-png-7178 1.png';
+import image3 from '../assets/pngegg (1)_auto_x2 1.png';
+
 
 const GetStartedPage = () => {
 
@@ -16,23 +20,23 @@ const GetStartedPage = () => {
 
 
   const imageScroll = [
-    // { img : 'src/assets/kisspng-model-fashion-trousers-leather-european-and-american-fashion-beautiful-models-5aa8c749eb0b75 1.png'},
     { 
-      img : 'src/assets/pngegg (1)_auto_x2 1.png',
-      title : 'Discover Something New',
-      subTitle : 'Special New Arrival just for you'
+      img: image1,  // Use imported image
+      title: 'Discover Something New',
+      subTitle: 'Special New Arrival just for you'
     },
     { 
-      img : 'src/assets/fashion-png-7178 1.png',
-      title : 'Update trendy Outfit',
-      subTitle : 'Favorit  brands and hottest trend'
+      img: image2,  // Use imported image
+      title: 'Update trendy Outfit',
+      subTitle: 'Favorit brands and hottest trend'
     },
     { 
-      img : 'src/assets/pngegg (1)_auto_x2 1.png',
-      title : 'Explore you true style',
-      subTitle : 'Relax and let use bring style to you'
+      img: image3,  // Use imported image
+      title: 'Explore your true style',
+      subTitle: 'Relax and let us bring style to you'
     },
   ]
+  
 
   const handleScroll = () => {
     if(scrollRef.current) {

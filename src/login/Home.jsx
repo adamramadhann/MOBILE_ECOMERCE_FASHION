@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import backgroundImage from '../assets/image 45.png';
+
 
 const Home = () => {
   return (
     <div 
     className='h-[100dvh] relative w-screen object-cover ' 
     style={{
-        backgroundImage:'url("src/assets/image 45.png")',
+        backgroundImage:`url(${backgroundImage})`,
         backgroundRepeat:'no-repeat',
         backgroundSize:'cover',
         backgroundPosition:'center'
