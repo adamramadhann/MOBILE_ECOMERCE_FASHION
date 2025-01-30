@@ -4,6 +4,11 @@ import { BiGitCompare } from 'react-icons/bi'
 import Search from '../components/SearchProduck'
 import { useOutletContext } from 'react-router-dom';
 import { combinedData } from '../data/data';
+import image from '/image 51.png';
+import imageAccessories from '/Mask Group(2).png';
+import imageShoes from '/shoes2.png';
+import imageCollection from '/Mask Group(3).png';
+
 
 
 
@@ -31,7 +36,7 @@ const SearchScreen = () => {
     const cardDetail = [
         {
             card: 'CLONING',
-            img: '/image 51.png',
+            img: image,
             bg: 'bg-[#BBBFAE]', 
             items: [
                 { jenis: 'Switer', items: '125 itsms' },
@@ -41,7 +46,7 @@ const SearchScreen = () => {
         },
         {
             card: 'ACCESSORIES',
-            img: '/Mask Group(2).png',
+            img: imageAccessories,
             bg: 'bg-[#A3A798]',
             items: [
                 { jenis: 'Tas', items: '125 itsms' },
@@ -51,7 +56,7 @@ const SearchScreen = () => {
         },
         {
             card: 'SHOES',
-            img: '/shoes2.png',
+            img: imageShoes,
             bg: 'bg-[#44565C]',
             items: [
                 { jenis: 'Sepatu', items: '125 itsms' },
@@ -61,7 +66,7 @@ const SearchScreen = () => {
         },
         {
             card: 'COLLECTION',
-            img: '/Mask Group(3).png',
+            img: imageCollection,
             bg: 'bg-[#B9AEB2]',
             items: [
                 { jenis: 'Switer', items: '125 itsms' },
@@ -70,6 +75,7 @@ const SearchScreen = () => {
             ]
         },
     ]
+    
  
     const handleSerch = (value) => {
         const filterDataProduckPopuler = combinedData.populer.filter((prev) => {
