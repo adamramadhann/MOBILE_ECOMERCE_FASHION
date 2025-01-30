@@ -11,9 +11,9 @@ import image2 from '../assets/Mask Group (6).png';
 import image3 from '/Mask Group copy.png';
 import image4 from '../assets/image 64.png';
 import image5 from '../assets/image 48.png';
-import image6 from '../assets/image 69.png';
-import image7 from '../assets/Mask Group(1).png';
-import image8 from '../assets/image 72 copy.png';
+import image6 from '../assets/Mask Group(1).png';
+import image7 from '../assets/image 72 copy.png';
+import image8 from '../assets/image 69.png';
 
 export const menuTopBarHomeScreen = [
     {
@@ -194,14 +194,14 @@ const HomeScreen = () => {
                     <h1 className='text-[20px] text-gray-600 ' >FOR SLIM & BEAUTY</h1>
                 </div>
               <div className='w-[45%] h-[150px] relative rounded-full p-4  ' >
-                  <img className='absolute top-0 h-[190px] ' src={image6} alt="" />
+                  <img className='absolute top-0 h-[190px] ' src={image8} alt="" />
               </div>
           </div>
         </div>
         {/* card blog */}
         <div className='relative flex items-center justify-center w-full bg-white h-[194px]  rounded-md top-16' >
-            <img className='absolute rounded-md right-0' src={image7} alt="" />
-            <img className='absolute rounded-md left-0' src={image8 } alt="" />
+            <img className='absolute rounded-md right-0' src={image6} alt="" />
+            <img className='absolute rounded-md left-0' src={image7} alt="" />
             <div className='flex  justify-between items-start' >
                 <div className='w-20 text-start' >
                     <h1 className='text-[13px] text-gray-400' >T-shirts</h1>
