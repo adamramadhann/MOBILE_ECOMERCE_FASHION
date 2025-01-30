@@ -8,6 +8,12 @@ import { useNavigate } from 'react-router-dom';
 import { image_all_items, imageFeature } from '../data/data';
 import image1 from '../assets/Mask Group (5).png';
 import image2 from '../assets/Mask Group (6).png';
+import image3 from '/Mask Group copy.png';
+import image4 from '../assets/image 64.png';
+import image5 from '../assets/image 48.png';
+import image6 from '../assets/image 69.png';
+import image7 from '../assets/Mask Group(1).png';
+import image8 from '../assets/image 72 copy.png';
 
 export const menuTopBarHomeScreen = [
     {
@@ -107,7 +113,7 @@ const HomeScreen = () => {
         {/* image */}
         <div>
             <div className='relative w-full flex justify-center  ' >
-                <img className='object-cover w-full' src="/Mask Group copy.png" alt="" />
+                <img className='object-cover w-full' src={image3} alt="" />
                 <p className='absolute top-3 right-14 text-xl text-white font-bold' >Auntumn <br /> Colection <br /> 2021</p>
             </div>
         </div>
@@ -143,7 +149,7 @@ const HomeScreen = () => {
               </div>
             <div className='w-[45%] h-[150px] relative rounded-full bg-[#EDEDEE] p-4  ' >
                 <div className='w-full h-full  bg-[#E2E2E2] rounded-full' >
-                    <img className='absolute top-0' src="src/assets/image 64.png" alt="" />
+                    <img className='absolute top-0' src={image4} alt="" />
                 </div>
             </div>
         </div>
@@ -178,7 +184,7 @@ const HomeScreen = () => {
                 </div>
               <div className='w-[115px] h-[115px]  relative rounded-full p-  ' >
                   <div className='w-full h-full  bg-[#E2E2E2] rounded-full' >
-                      <img className='absolute h-[120px] left-1/2 -translate-x-1/2 rounded-b-full -top-1' src="/homeScreen/image 48.png" alt="" />
+                      <img className='absolute h-[120px] left-1/2 -translate-x-1/2 rounded-b-full -top-1' src={image5} alt="" />
                   </div>
               </div>
           </div>
@@ -188,14 +194,14 @@ const HomeScreen = () => {
                     <h1 className='text-[20px] text-gray-600 ' >FOR SLIM & BEAUTY</h1>
                 </div>
               <div className='w-[45%] h-[150px] relative rounded-full p-4  ' >
-                  <img className='absolute top-0 h-[190px] ' src="src/assets/image 69.png" alt="" />
+                  <img className='absolute top-0 h-[190px] ' src={image6} alt="" />
               </div>
           </div>
         </div>
         {/* card blog */}
         <div className='relative flex items-center justify-center w-full bg-white h-[194px]  rounded-md top-16' >
-            <img className='absolute rounded-md right-0' src="src/assets/Mask Group(1).png" alt="" />
-            <img className='absolute rounded-md left-0' src="src/assets/image 72 copy.png" alt="" />
+            <img className='absolute rounded-md right-0' src={image7} alt="" />
+            <img className='absolute rounded-md left-0' src={image8 } alt="" />
             <div className='flex  justify-between items-start' >
                 <div className='w-20 text-start' >
                     <h1 className='text-[13px] text-gray-400' >T-shirts</h1>
