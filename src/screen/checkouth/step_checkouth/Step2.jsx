@@ -56,24 +56,48 @@ const payment = [
 
 const Step2 = () => {
     const [centerCard, setCenterCard] = useState(null);
+    const [dataCheckout, setDataCheckout] = useState([]);
+    const [amount, setAmount] = useState([]);
     const [agree, setAgree] = useState('');
     const containerRef = useRef(null);
     const navigate = useNavigate()
     
     const price = JSON.parse(localStorage.getItem('total_price'))
-    const cardItem = JSON.parse(localStorage.getItem('card'))
+    const cardItem = JSON.parse(localStorage.getItem('checkout_produck'))
+
+    const filterCheckout = cardItem.filter((val) => val.id !== cardItem.id)
+    console.log('tex',filterCheckout);
+    
+    
+    const getAmount = JSON.parse(localStorage.getItem('amount')) 
+    console.log('amount',getAmount);
+    
+    
+
+
+    const handleRemoveItem = (id) => {
+        const filterCard = cardItem.filter((val) => val.id !== id)
+        
+
+        localStorage.setItem('checkout_produck', JSON.stringify(filterCard))
+        localStorage.setItem('card', JSON.stringify(filterCard))
+
+        setDataCheckout(filterCard)
+        console.log('card berhasil di check : ', filterCard );
+    }
 
     const handleSUbmit = (e) => {
         e.preventDefault()
         localStorage.setItem('step_2',JSON.stringify(agree))
+        const filter = cardItem.filter((val) => val.id !== e)
+        localStorage.removeItem(filter)
         navigate('/checkout/step3')
+        handleRemoveItem(e.id)
     }
     
     
 
     const extendedPayment = Array(5).fill(payment).flat()
-
-
     
     const handleScroll = () => {
         const container = containerRef.current;
@@ -100,6 +124,9 @@ const Step2 = () => {
         const normalizedIndex = closestIndex % payment.length;
         setCenterCard(normalizedIndex);
     };
+
+
+
 
 
 
@@ -181,7 +208,7 @@ const Step2 = () => {
                     cardItem.map((val) => (
                         <span className='flex items-center justify-between border-b pb-3 ' >
                             <h1 className='text-sm text-gray-500 font-bold' >{val.nameProduck}</h1>
-                            <p className='text-sm text-gray-500 font-bold' >{val.price}</p>
+                            <p className='text-sm text-gray-500 font-bold' >{(getAmount[val.id] && !isNaN(getAmount[val.id]) ? (val.price * getAmount[val.id]) : 0)}</p>
                         </span>
                     ))
                    }
@@ -191,7 +218,7 @@ const Step2 = () => {
                    </span> */}
                    <span className='flex items-center justify-between border-b pb-3 ' >
                         <h1 className='text-lg text-gray-500 font-bold' >Subtotal</h1>
-                        <p className='text-lg text-gray-500 font-bold' >{price}</p>
+                        <p className='text-lg text-gray-500 font-bold' >$ {price} </p>
                    </span>
                 <form onSubmit={handleSUbmit} >
                 <span className='flex w-full gap-5 items-center' >

@@ -58,8 +58,8 @@ const Setting = () => {
         <div className='flex px-7 items-center justify-between' >
             <img src={ dataUser.image || "/setting/image.png"} className='w-12 rounded-full h-12' alt="" />
             <div>
-                <h1 className='font-bold text-lg' >{dataUser.first_name} {dataUser.last_name} </h1>
-                <p className='text-xs' >{dataUser.email}</p>
+                <h1 className='font-bold text-lg' >{dataUser.first_name || 'adam'} {dataUser.last_name || 'ramadhan'}  </h1>
+                <p className='text-xs' >{dataUser.email || 'ramadhanadam1104@gmail.com'}</p>
             </div>
             <Link className='ml-2' to={'/profile'} >
                 <AiOutlineSetting size={28}  />

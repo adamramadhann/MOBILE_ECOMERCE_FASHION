@@ -5,7 +5,7 @@ import { AiOutlineRight } from 'react-icons/ai'
 import HeadersCheckout from '../components/HeadersCheckout'
 import { useCard } from '../SaveCardContext'
 import { useNavigate } from 'react-router-dom'
-import { useCardMW } from '../ContextMyWhislist'
+
 
 const MyWhistList = () => {
   const {card, setCard} = useCard()
@@ -49,7 +49,7 @@ const MyWhistList = () => {
 console.log(btnActive);
 
   return (
-    <div className='w-full p-5 h-full' >
+    <div className='w-full p-5 overflow-auto  h-[100dvh]' >
               <HeadersCheckout title={'My Wishlist'} />
          <div className='fixed top-11 bg-white left-1/2 -translate-x-1/2 flex items-end justify-center h-20 w-full' >
          <div className='w-full flex border' >
@@ -63,7 +63,7 @@ console.log(btnActive);
            <div className='w-full mt-28' >
            {
               btnActive === 'All items' && (
-                <div className={`grid mt-5 hide-scrollbar grid-cols-2 gap-10 w-full ${Array.isArray(data) && data.length > 0 && 'overflow-auto h-[100dvh]'} `} >
+                <div className={`grid mt-5 hide-scrollbar grid-cols-2 gap-10 w-full ${Array.isArray(data) && data.length > 0 && 'h-[100dvh]'} `} >
                 {
                   Array.isArray(data) && data.length > 0 ? data.map((val) => (
                     <div onClick={() => handleDetail(val, val.id)} className='w-[140px] h-[250px] ' >
@@ -96,7 +96,6 @@ console.log(btnActive);
                     dataBoard.map((val, index) => (
                       <div className='mb-12 overflow-auto' >
                       <div className="grid mb-2 grid-cols-12 h-[140px] gap-2 ">
-                      {/* Large left image */}
                       <div className="col-span-4">
                         <img 
                           src={val.img1}
@@ -105,7 +104,6 @@ console.log(btnActive);
                         />
                       </div>
                       
-                      {/* Large center image */} 
                       <div className="col-span-4 ">
                         <img 
                           src={val.img2}
@@ -114,7 +112,6 @@ console.log(btnActive);
                         />
                       </div>
                       
-                      {/* Right column with smaller images */}
                       <div className=" col-span-2 ">
                         <img 
                           src={val.img3}
@@ -150,7 +147,6 @@ console.log(btnActive);
                       </div>
                      ))
                     } 
-                    {/* <div className='h-20' ></div> */}
                 </div>
               )
             } 

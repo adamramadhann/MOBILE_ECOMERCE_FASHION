@@ -6,6 +6,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useCard } from '../SaveCardContext'
 import { FaHeart } from 'react-icons/fa'
 import { useCardMW } from '../ContextMyWhislist'
+import image1 from '/image copy 17.png';
+import image2 from '/image copy 18.png';
+import image3 from '/image copy 19.png';
+import image4 from '/image copy 20.png';
+import image5 from '/image copy 21.png';
+import image6 from '/Mask Group (2) copy.png';
 
   const DetailsCard = () => {
     const {card, setCard} = useCard()
@@ -84,38 +90,41 @@ import { useCardMW } from '../ContextMyWhislist'
       message : "I'm very happy with order, It was delivered on and good quality. Recommended!"
     },
   ]
+
+
   const dataSemilarProduck = [
     {
-      id:31,
-      merek : 'Gym Crop Top',
-      price : '$ 39.99',
-      img : '/Mask Group(6).png'
+      id: 31,
+      merek: 'Gym Crop Top',
+      price: '$ 39.99',
+      img: image1
     },
     {
-      id:32,
-      merek : 'Gym Crop Top',
-      price : '$ 39.99',
-      img : '/Mask Group(6).png'
+      id: 32,
+      merek: 'Gym Crop Top',
+      price: '$ 39.99',
+      img: image2
     },
     {
-      id:33,
-      merek : 'Gym Crop Top',
-      price : '$ 39.99',
-      img : '/Mask Group(6).png'
+      id: 33,
+      merek: 'Gym Crop Top',
+      price: '$ 39.99',
+      img: image3
     },
     {
-      id:34,
-      merek : 'Gym Crop Top',
-      price : '$ 39.99',
-      img : '/Mask Group(6).png'
+      id: 34,
+      merek: 'Gym Crop Top',
+      price: '$ 39.99',
+      img: image4
     },
     {
-      id:35,
-      merek : 'Gym Crop Top',
-      price : '$ 39.99',
-      img : '/Mask Group(6).png'
+      id: 35,
+      merek: 'Gym Crop Top',
+      price: '$ 39.99',
+      img: image5
     },
-  ]
+  ];
+  
 
 
   const handleClickSize = (value) => {
@@ -167,7 +176,8 @@ import { useCardMW } from '../ContextMyWhislist'
     },
   ]
 
-  const addToCard = () => {
+  const addToCard = (id) => {
+    id.preventDefault()
     const cardItem = {
       id : card.id,
       nameProduck : card.nameProduck,
@@ -181,20 +191,26 @@ import { useCardMW } from '../ContextMyWhislist'
     
 
     const getLocalStorage = JSON.parse(localStorage.getItem('card'))  || []
-    const updateCards = [...getLocalStorage, cardItem]
+    const chechCard = getLocalStorage.some((val) => val.id === cardItem.id)
 
-    const updateData = updateCards.map((val) => {
-      const colorData = colorName.find((e) => e.clasName === val.color )
-      return {
-        ...val,
-        color : colorData ? colorData.name : null
-      }
-    })
+    if(chechCard) {
+      alert('already produck to you card')
+    } else {
+      const updateCards =  [...getLocalStorage, cardItem]
 
-    localStorage.setItem('card', JSON.stringify(updateData))
-    alert('produck success add to My Card')
+      const updateData = updateCards.map((val) => {
+        const colorData = colorName.find((e) => e.clasName === val.color )
+        return {
+          ...val,
+          color : colorData ? colorData.name : null
+        }
+      })
+  
+      localStorage.setItem('card', JSON.stringify(updateData))
+      alert('produck success add to My Card')
+      console.log(updateData);
+    }
 
-    console.log(updateData);
 
   }  
 
@@ -216,14 +232,13 @@ import { useCardMW } from '../ContextMyWhislist'
       localStorage.setItem('heart', JSON.stringify(filterStorage))
       setHeart(filterStorage)
       setIsHeart(false)
-      setSaveCard(false)
     }
   }
 
   useEffect(() => {
     const getLocal = JSON.parse(localStorage.getItem('heart')) || []
     const status = getLocal.some((prev) => prev.id === card.id)
-    setHeart(status)
+    setIsHeart(status)
   }, [card.id])
   
 
@@ -344,7 +359,7 @@ import { useCardMW } from '../ContextMyWhislist'
                               <div className='w-ful space-y-5 h-auto py-2 shadow-[0_0_5px_rgba(0,0,0,0.2)] p-2 rounded-md ' >
                                   <div className='flex justify-between items-center ' >
                                     <div className='flex items-center gap-3 ' >
-                                      <img src="/Mask Group (2) copy.png" alt="" className='h-12 w-12 rounded-full ' />
+                                      <img src={image6} alt="" className='h-12 w-12 rounded-full ' />
                                       <span className='space-y-2' >
                                           <h1 className='text-xl font-extralight' >Jennifer Rose</h1>
                                           <span className='text-xs text-green-500' >★ ★ ★ ★ ★</span>
@@ -372,7 +387,7 @@ import { useCardMW } from '../ContextMyWhislist'
                   {
                     dataSemilarProduck.map((val) => (
                       <div onClick={() => handleClickDetail(val, val.id)} className='flex-none' >
-                          <img src={val.img} alt="" />
+                          <img src={val.img} className='h-[180px] object-cover object-top w-[130px] rounded-md ' alt="" />
                           <span>  
                               <h1 className='text-[1rem]  ' >{val.merek}</h1>
                               <p className='text-lg font-bold ' >{val.price}</p>

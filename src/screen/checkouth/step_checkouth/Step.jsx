@@ -45,6 +45,7 @@ const Step = () => {
          <div className='space-y-6' >
             <label htmlFor='first_name' className="relative w-full text-sm">
                 <input
+                    required
                     placeholder="First Name "
                     className="w-full border-b outline-none text-sm  p-2 peer "
                     type="text"
@@ -58,7 +59,7 @@ const Step = () => {
             </label>
             <label className=' block relative  text-sm text-gray-700 ' htmlFor="last_name">
                 <input 
-                required 
+                required
                 className='border-b peer p-1 outline-none rounded-md text-sm ' 
                 type="text" id="last_name" placeholder='Last Name' name="last_name" 
                 value={formData.last_name}
@@ -68,17 +69,17 @@ const Step = () => {
             </label>
             <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="street">
                 <input placeholder='Street Name' 
-                required 
                 className='border-b peer p-1 outline-none rounded-md text-sm ' 
                 type="text" name='street' id='street' 
                 value={formData.street}
                 onChange={handleChange}
+                required
             />
                 <span className='w-0 transition-all duration-300 h-[2px] absolute bottom-0 peer-focus:w-full peer-focus:left-1/2 peer-focus:-translate-x-1/2 peer-focus:bg-[#2563EB] ' ></span>
             </label>
             <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="city">
                 <input placeholder='City' 
-                required 
+                 required
                 className='border-b peer p-1  outline-none rounded-md text-sm ' 
                 type="text" name='city' id='city' 
                 value={formData.city}
@@ -88,7 +89,7 @@ const Step = () => {
             </label>
             <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="province">
                 <input placeholder='State / Province' 
-                required 
+                 required
                 className='border-b peer p-1  outline-none rounded-md text-sm ' 
                 type="text" name='province' id='province'
                 value={formData.province}
@@ -98,7 +99,7 @@ const Step = () => {
             </label>
             <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="zep">
                 <input placeholder='Zep-code' 
-                required 
+                 required
                 className='border-b p-1 peer  outline-none rounded-md text-sm ' 
                 type="text" name='zep' 
                 id='zep' 
@@ -110,7 +111,7 @@ const Step = () => {
             <label className='flex flex-col relative text-sm text-gray-700 ' htmlFor="phone">  
                 <input 
                     placeholder='Phone number' 
-                    required 
+                    required
                     className='border-b p-1 peer outline-none rounded-md text-sm ' 
                     name='phone' 
                     type="text" 
@@ -124,15 +125,15 @@ const Step = () => {
                 <h1 className='text-[15px] text-gray-700 font-bold' >Shipping method</h1>
                <div>
                <div className='flex w-full gap-7 shadow-md mt-5 rounded-lg py-3 justify-center' >
-                    <input required className='h-6 w-6' alue={formData.shipping_method} onChange={handleChange} name='shipping_method' type="radio" />
+                    <input  className='h-6 w-6' alue={formData.shipping_method} onChange={handleChange} name='shipping_method' type="radio" />
                     <div>
-                        <p className='font-bold text-sm' >Free <span className='font-light' >Delivery to home</span></p>
+                        <p className='font-bold text-sm' >$20.00 <span className='font-light' >Delivery to home</span></p>
                         <p className='text-sm text-gray-400' >Delivery from 3 to 7 business days</p>
                     </div>
                 </div>
                <div className='flex w-full gap-7 shadow-md mt-5 rounded-lg py-3 justify-center' >
                     <input 
-                    required value={formData.shipping_method} onChange={handleChange} className='h-6 w-6' name='shipping_method' type="radio" />
+                     value={formData.shipping_method} onChange={handleChange} className='h-6 w-6' name='shipping_method' type="radio" />
                     <div>
                         <p className='font-bold text-sm' >$99.00 <span className='font-light' >Delivery to home</span></p>
                         <p className='text-sm text-gray-400' >Delivery from 3 to 7 business days</p>
@@ -140,7 +141,7 @@ const Step = () => {
                 </div>
                <div className='flex w-full gap-7 shadow-md mt-5 rounded-lg py-3 justify-center' >
                     <input 
-                    required className='h-6 w-6' alue={formData.shipping_method} onChange={handleChange} name='shipping_method' type="radio" />
+                     className='h-6 w-6' alue={formData.shipping_method} onChange={handleChange} name='shipping_method' type="radio" />
                     <div>
                         <p className='font-bold text-sm' >$50.00 <span className='font-light' >Delivery to home</span></p>
                         <p className='text-sm text-gray-400' >Delivery from 3 to 7 business days</p>
@@ -150,7 +151,7 @@ const Step = () => {
             </div>
             <label className='py-10 flex justify-between text-green-600 items-center  gap-2 ' htmlFor="Coupon_Code">
                 <input 
-                required type="text" name='code_discount' className='outline-none w-full text-gray-400 ' placeholder='Have a code? type it here...' />
+                 type="text" name='code_discount' className='outline-none w-full text-gray-400 ' placeholder='Have a code? type it here...' />
                  Validate
             </label>
          </div>
@@ -158,7 +159,7 @@ const Step = () => {
                 <h1 className='text-[15px] text-gray-700 font-bold' >Billing Address</h1>
                 <span className='flex gap-7 items-center text-gray-500' >
                     <input 
-                    required className='' name='addres_checked' type="checkbox" />
+                     className='' name='addres_checked' required type="checkbox" />
                     <p>Copy address data from shipping</p>
                 </span>
             </div>
